@@ -1,2 +1,371 @@
-# xduugtp
+![Xidian University](xidian.png)
+
+# 目录
+
+- [项目名称](#项目名称)
+- [注意事项](#注意事项)
+- [使用/示例](#使用示例)
+  - [卸载与安装](#卸载与安装)
+    - [配置镜像源](#配置镜像源)
+    - [更新包管理器和所有包](#更新包管理器和所有包)
+  - [字体安装](#字体安装)
+    - [Windows](#windows)
+    - [GNU/Linux](#gnulinux)
+    - [macOS](#macos)
+    - [Overleaf](#overleaf)
+    - [TeXPage](#texpage)
+  - [下载与编辑](#下载与编辑)
+  - [编译](#编译)
+    - [命令编译](#命令编译)
+      - [latexmk编译](#latexmk编译)
+      - [四次编译](#四次编译)
+    - [文本编辑器编译](#文本编辑器编译)
+    - [WinEdt编译](#winedt编译)
+    - [TeXworks编译](#texworks编译)
+    - [TeXstudio编译](#texstudio编译)
+    - [Texmaker编译](#texmaker编译)
+    - [Overleaf编译](#overleaf编译)
+    - [TeXPage编译](#texpage编译)
+  - [参考文献引用](#参考文献引用)
+  - [字体形状与字体系列](#字体形状与字体系列)
+  - [签名图像](#签名图像)
+- [模板来源](#模板来源)
+- [版本记录](#版本记录)
+- [免责声明](#免责声明)
+- [作者](#作者)
+
+# 项目名称
+
+xduugtp-Xidian University Undergraduate Thesis Proposal
+
 西安电子科技大学本科生毕业论文（设计）开题报告XeLaTeX模板
+
+# 注意事项
+
+在使用过程中有任何问题或者建议，可以提[Issue](https://github.com/note286/xduugtp/issues)反馈，注意，不同的问题开多个issue，不要堆在一个issue里。
+
+关于环境配置请阅读[install-latex-guide-zh-cn.pdf](https://mirrors.ustc.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf)，想要入门LaTeX或者对LaTeX语法一知半解的请阅读[lshort-zh-cn.pdf](https://mirrors.ustc.edu.cn/CTAN/info/lshort/chinese/lshort-zh-cn.pdf)，想要查询数学符号的可以在[symbols-a4.pdf](https://mirrors.ustc.edu.cn/CTAN/info/symbols/comprehensive/symbols-a4.pdf)中搜索。本项目文档都很详细，请认真阅读README。
+
+**由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了README和示例代码。**
+
+# 使用/示例
+
+本节介绍了一些使用本项目模板的方法，建议用户根据自身情况阅读。
+
+## 卸载与安装
+
+Windows和GNU/Linux平台使用[TeX Live](https://www.tug.org/texlive/)，macOS平台使用[MacTeX](https://www.tug.org/mactex/)，跨版本升级均需要卸载旧版。
+
+Windows平台卸载方法为管理员身份直接运行`C:\texlive\2021\tlpkg\installer\uninst.bat`，不同版本和安装位置请按需修改目录，更多介绍请参考[install-latex-guide-zh-cn.pdf](https://mirrors.ustc.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf)第1.2节，GNU/Linux平台卸载方法请参考[install-latex-guide-zh-cn.pdf](https://mirrors.ustc.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf)第2.2节，macOS上卸载方法请参考[Uninstalling MacTeX](https://www.tug.org/mactex/uninstalling.html)。
+
+本项目模板仅在TeX Live/MacTeX 2021通过测试，其他旧版本并未实际进行测试。建议安装最新版LaTeX发行版套装并更新所有包，如果已安装TeX Live或MacTeX并且能够编译，用户可以选择不升级套装，不更新包。
+
+校内睿思下载地址：[TeX Live 2021](http://rs.xidian.edu.cn/forum.php?mod=viewthread&tid=1094234)和[MacTeX 2021](http://rs.xidian.edu.cn/forum.php?mod=viewthread&tid=1094235)，最新版中科大源校外下载地址：[TeX Live](https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive.iso)和[MacTeX](https://mirrors.ustc.edu.cn/CTAN/systems/mac/mactex/MacTeX.pkg)。
+
+后续如无特殊情况，仅以Windows举例，其他操作系统上类似。右键选择下载好的`.iso`文件，选择打开方式->Windows资源管理器，然后右键以管理员身份运行`install-tl-windows.bat`，保持默认配置即可，如没有本地阅读文档的需求，安装时可以不勾选安装文档的选项，这样会减少大约一半的磁盘占用空间，具体来说，在TeX Live安装窗口中点击左下角Advanced，取消勾选安装字体/宏包文档目录树和安装字体/宏包源码目录树即可不安装文档和源码。更多LaTeX环境安装与配置请阅读[install-latex-guide-zh-cn.pdf](https://mirrors.ustc.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf)，建议更新所有包至最新版，Windows平台上使用管理员身份运行[cmd](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmd)。
+
+### 配置镜像源
+
+管理员权限运行
+
+```shell
+tlmgr repository set https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+```
+
+### 更新包管理器和所有包
+
+管理员权限运行
+
+```shell
+tlmgr update --all --self
+```
+
+如果遇到更新失败，重新执行一遍。
+
+## 字体安装
+
+考虑到可能存在版权问题，故不提供字体文件或字体下载链接。
+
+对于编译得到pdf文件，可以通过运行
+
+```shell
+pdffonts xduugtp.pdf
+```
+
+来查看字体信息，包括字体名称和字体嵌入等情况。
+
+### Windows
+
+Windows平台无需手动配置字体，所需字体Windows操作系统已内置。
+
+### GNU/Linux
+
+由于默认情况下中易宋体的意大利形状对应的是中易楷体，因此中文字体除中易宋体和中易黑体外，还需要中易楷体。
+
+用户可以从Windows操作系统字体库中拷贝出`simhei.ttf`、`simkai.ttf`、`simsun.ttc`、`times.ttf`、`timesbd.ttf`、`timesbi.ttf`和`timesi.ttf`共7个字体文件至GNU/Linux，其中3个中文字体文件位于`C:\Windows\Fonts`处，Times New Roman字体的4个字体文件位于`C:\Windows\Fonts\Times New Roman`处。用户在查找字体时，可以根据Windows中英文系统内字体名称来查找，找到后复制该字体，粘贴至某个空白文件夹即可得到对应的字体文件，然后将这7个字体文件传输至GNU/Linux。
+
+|    字体名称     | 字体文件名  |  Windows英文系统内字体名称  | Windows中文系统内字体名称 |
+| :-------------: | :---------: | :-------------------------: | :-----------------------: |
+|    中易黑体     | simhei.ttf  |       SimHei Regular        |         黑体 常规         |
+|    中易楷体     | simkai.ttf  |        KaiTi Regular        |         楷体 常规         |
+|    中易宋体     | simsun.ttc  |       SimSun Regular        |         宋体 常规         |
+| Times New Roman |  times.ttf  |   Times New Roman Regular   |   Times New Roman 常规    |
+| Times New Roman | timesbd.ttf |    Times New Roman Bold     |   Times New Roman 粗体    |
+| Times New Roman | timesbi.ttf | Times New Roman Bold Italic |  Times New Roman 粗斜体   |
+| Times New Roman | timesi.ttf  |   Times New Roman Italic    |   Times New Roman 斜体    |
+
+使用如下命令在GNU/Linux安装字体：
+
+```shell
+sudo cp simhei.ttf simkai.ttf simsun.ttc times.ttf timesbd.ttf timesbi.ttf timesi.ttf /usr/share/fonts
+```
+
+然后就可以根据[编译](#编译)里的方法去编译了。
+
+### macOS
+
+参考[GNU/Linux](#gnulinux)从Windows平台提取字体文件，然后在macOS上双击安装字体文件即可。注意，虽然macOS内置了Times New Roman字体，但是该内置字体版本过于老旧，有缺字的现象，建议将7个字体文件全部安装。
+
+然后就可以根据[编译](#编译)里的方法去编译了。
+
+### Overleaf
+
+在[Overleaf in Chinese](https://cn.overleaf.com/)平台使用时，由于Overleaf是安装在GNU/Linux上的最新版的TeX Live，用户无需考虑LaTeX套装版本问题，仅需要安装字体即可，用户首先将本仓库[下载](https://github.com/note286/xduugtp/archive/refs/heads/main.zip)，再根据[GNU/Linux](#gnulinux)中的方法得到字体文件。
+
+在Overleaf左上角点击创建新项目，选择上传项目，将压缩包上传至Overleaf，会自动进入该研究生学位论文开题报告表模板项目。点击左上角新建目录按钮，新建一个名为`fonts`的文件夹，选中`fonts`文件夹，点击左上角上传按钮将所有的字体文件上传。最后根据[Overleaf编译](#overleaf编译)配置如何在线编译。
+
+### TeXPage
+
+在[TeXPage](https://www.texpage.com/)平台使用时，由于TeXPage是安装在GNU/Linux上的最新版的TeX Live，用户无需考虑LaTeX套装版本问题，仅需要安装字体即可，用户首先将本仓库[下载](https://github.com/note286/xduugtp/archive/refs/heads/main.zip)，再根据[GNU/Linux](#gnulinux)中的方法得到字体文件。
+
+在TeXPage[个人主页](https://www.texpage.com/console)左上角点击创建，选择上传项目，将压缩包上传至TeXPage，进入该研究生学位论文开题报告表模板项目。点击左上角新建文件夹按钮，新建一个名为`fonts`的文件夹，选中`fonts`文件夹，点击左上角上传文件按钮将所有的字体文件上传。最后根据[TeXPage编译](#texpage编译)配置如何在线编译。
+
+## 下载与编辑
+
+请点击[下载](https://github.com/note286/xduugtp/archive/refs/heads/main.zip)压缩包或[克隆](x-github-client://openRepo/https://github.com/note286/xduugtp)该仓库，用户可直接修改`.tex`和`.bib`等类型文件来进行研究生学位论文开题报告表的撰写。具体来说，用户通过编辑`xduugtp.tex`和`xduugtp.bib`文件来撰写论文内容。此外，`xduugtp.cls`文件请不要修改。
+
+其中，除指导教师意见和学院审核意见这两部分仅支持单页内容的撰写，其他部分均支持自动分页，无需用户手动分页。
+
+## 编译
+
+本项目目前仅在Windows和GNU/Linux平台上的TeX Live 2021和macOS平台上的MacTeX 2021进行了测试，均更新所有包至最新版，并参考[字体安装](#字体安装)安装了缺失字体。命令编译时切换到`xduugtp.tex`所在目录执行命令即可。IDE编译选择对应IDE中的`XeLaTeX`的编译方式，参考文献使用`BibTeX`编译。关于PDF查看器，Windows平台上推荐使用[Sumatra PDF Viewer](https://www.sumatrapdfreader.org/free-pdf-reader)，macOS平台上推荐[Skim](https://skim-app.sourceforge.io/)，适当配置可支持正向同步和反向同步。
+
+### 命令编译
+
+介绍如何使用命令编译，可选择使用`latexmk`来快速编译或者常规的四次编译。
+
+#### latexmk编译
+
+编译
+
+```shell
+latexmk
+```
+
+清理辅助文件
+
+```shell
+latexmk -c
+```
+
+#### 四次编译
+
+编译
+
+```shell
+xelatex -synctex=1 xduugtp
+bibtex xduugtp
+xelatex -synctex=1 xduugtp
+xelatex -synctex=1 xduugtp
+```
+
+清理辅助文件
+
+```shell
+latexmk -c
+```
+
+### 文本编辑器编译
+
+任何一款[文本编辑器](https://zh.wikipedia.org/wiki/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8)均可以编辑`.tex`文件，包括[Sublime Text](https://www.sublimetext.com/)和[Visual Studio Code](https://code.visualstudio.com/)等，大部分文本编辑器均提供自定义编译功能，例如Sublime Text的[Build Systems](https://www.sublimetext.com/docs/build_systems.html)，可以参考[命令编译](#命令编译)自行创建相应的编译配置，利用编译快捷键进行编译。此外，一些文本编辑器支持安装扩展，例如Sublime Text可以安装[LaTeXTools](https://packagecontrol.io/packages/LaTeXTools)来辅助进行`.tex`文件的编辑，还提供了一些常用的编译配置。可以搭配Sumatra PDF Viewer或Skim实现反向同步，正向同步一般需要文本编辑器或其扩展支持。
+
+一些文本编辑器不支持自定义编译功能或者安装扩展，依然可以使用文本编辑器来编辑`.tex`文件，使用命令来进行编译。
+
+### WinEdt编译
+
+下载[WinEdt](https://www.winedt.com/download.html)安装包并安装，支持Windows平台。安装后可以查看[Quick Guide](http://www.winedt.com/download.html#Quick_Guide)获取更多关于WinEdt的使用帮助。
+
+打开WinEdt后，点击File->Open打开`xduugtp.tex`文件。点击Option->Execution Modes，在弹出的面板左侧选择TeXify，在面板左下角点击Browse for executable，依次找到`C:\texlive\2021\bin\win32\latexmk.exe`文件并点击打开，如果安装TeX Live至非默认目录，依情况修改；将左下角的Switches中对应值清空，最后点击面板上的OK。
+
+在Toolbar中PDF Preview左侧的按钮下拉菜单中可以切换编译引擎。完全编译选择TeXify，可以自动处理交叉引用和参考文献引用，编译时间较长；不考虑交叉引用和参考文献引用时，快速编译选择XeLaTeX，编译时间较短，需要参考文献引用时再点击TeX->BibTeX编译参考文献，接着执行两次XeLaTeX编译可以生成参考文献列表和参考文献引用。
+
+点击Tools->Erase Output Files或者Toolbar中的Erase Output Files按钮，在弹出的面板中再点击Delete Now可以清理辅助文件，常用于某次报错后清理错误的辅助文件，避免二次报错。
+
+可以参考[QuickGuide.pdf](http://www.winedt.com/doc/QuickGuide.pdf)中第2.3节配置WinEdt默认PDF查看器为Sumatra PDF Viewer，即点击Option->Execution Modes，在弹出的面板选择PDF Viewer标签，将PDF Viewer Executable改为SumatraPDF.exe，Sumatra PDF Viewer默认安装在`%LOCALAPPDATA%\SumatraPDF\`处，这样就可以使用Sumatra PDF Viewer来查看PDF文件。Sumatra PDF Viewer的反向同步一般WinEdt会自动配置，如果需要手动配置，在Sumatra PDF Viewer左上角点击三道杠->设置->选项，在最后设置反向搜索命令行中填写
+
+```
+"C:\Program Files\WinEdt Team\WinEdt 10\WinEdt.exe" "[Open(|%f|);SelPar(%l,8);]"
+```
+
+并点击确定即可。
+
+注意，由于WinEdt添加新的编译配置较为复杂，本方法将TeXify内的编译引擎由LaTeX改为latexmk，并使用了主目录下的`latexmkrc`编译配置。
+
+### TeXworks编译
+
+下载[TeXworks](https://tug.org/texworks/)安装包并安装，支持Windows，GNU/Linux和macOS平台。安装后可以查看[A short manual for TeXworks](https://github.com/TeXworks/manual/releases)获取更多关于TeXworks的使用帮助。
+
+打开TeXworks后，点击编辑->首选项->排版->处理工具，点击右下角蓝色加号，在弹出的面板中名称处填写latexmk，程序处点击右侧浏览选择`C:\texlive\2021\bin\win32\latexmk.exe`文件并点击打开，如果安装TeX Live至非默认目录，依情况修改，最后点击面板上的OK。选择新建的latexmk，点击右侧的蓝色上箭头移动至顶部，再将内置的XeLaTeX和BibTeX移动至顶部，使得latexmk、XeLaTeX和BibTeX位于处理工具的顶部，方便后续切换引擎。再选择下方的默认，可以将latexmk或者XeLaTeX设置为默认，最后点击OK。
+
+点击文件->打开，选择`xduugtp.tex`文件，Toolbars左上角可以切换编译引擎。完全编译选择latexmk，可以自动处理交叉引用和参考文献引用，编译时间较长；不考虑交叉引用和参考文献引用时，快速编译选择XeLaTeX，编译时间较短，需要参考文献引用时切换至BibTeX编译参考文献，接着执行两次XeLaTeX编译可以生成参考文献列表和参考文献引用。
+
+点击文件->删除辅助文件，在弹出的面板中再点击删除可以清理辅助文件，常用于某次报错后清理错误的辅助文件，避免二次报错。
+
+TeXworks内置了PDF查看器，支持正向同步和反向同步功能，具体请查看[A short manual for TeXworks](https://github.com/TeXworks/manual/releases)中5.1节。
+
+### TeXstudio编译
+
+下载[TeXstudio](https://www.texstudio.org/#download)安装包并安装，支持Windows，GNU/Linux和macOS平台。安装后可以查看[TeXstudio : User manual](https://htmlpreview.github.io/?https://github.com/texstudio-org/texstudio/master/utilities/manual/usermanual_en.html)获取更多关于TeXstudio的使用帮助。
+
+打开TeXstudio后，点击文件->打开，选择`xduugtp.tex`文件。点击选项->设置TeXstudio->命令，将Latexmk处值改为`latexmk.exe`，切换至构建标签，将默认编译器改为Latexmk或者XeLaTeX。
+
+TeXstudio无法快速切换编译引擎，只能在选项->设置TeXstudio->构建里修改默认编译器，或者点击工具->命令里临时运行指定的编译引擎。完全编译选择latexmk，可以自动处理交叉引用和参考文献引用，编译时间较长；不考虑交叉引用和参考文献引用时，快速编译选择XeLaTeX，编译时间较短，需要参考文献引用时切换至BibTeX编译参考文献，接着执行两次XeLaTeX编译可以生成参考文献列表和参考文献引用。
+
+点击工具->清理辅助文件，在弹出的面板中选择合适的范围再点击OK便可以清理辅助文件，常用于某次报错后清理错误的辅助文件，避免二次报错。
+
+TeXstudio内置了PDF查看器，支持正向同步和反向同步功能，具体请查看[TeXstudio : User manual](https://htmlpreview.github.io/?https://github.com/texstudio-org/texstudio/master/utilities/manual/usermanual_en.html)中4.10节。
+
+### Texmaker编译
+
+下载[Texmaker](https://www.xm1math.net/texmaker/)安装包并安装，支持Windows，GNU/Linux和macOS平台。安装后可以查看[Texmaker : User manual](https://www.xm1math.net/texmaker/doc.html)获取更多关于Texmaker的使用帮助。
+
+打开Texmaker后，点击文件->打开，选择`xduugtp.tex`文件。点击选项->配置Texmaker->命令，将LaTeX-Mk中对应值改为`latexmk`，点击OK。
+
+工具栏中可以切换编译引擎。完全编译选择latexmk，可以自动处理交叉引用和参考文献引用，编译时间较长；不考虑交叉引用和参考文献引用时，快速编译选择XeLaTeX，编译时间较短，需要参考文献引用时切换至BibTeX编译参考文献，接着执行两次XeLaTeX编译可以生成参考文献列表和参考文献引用。
+
+点击工具->清除历史记录，在弹出的面板中再点击删除文件可以清理辅助文件，常用于某次报错后清理错误的辅助文件，避免二次报错。
+
+Texmaker内置了PDF查看器，支持正向同步和反向同步功能，具体请查看[Texmaker : User manual](https://www.xm1math.net/texmaker/doc.html)中3.3节。
+
+### Overleaf编译
+
+用户首先根据[Overleaf](#overleaf)中关于字体安装的介绍安装好字体，再点击左上角的菜单按钮修改编译器为`XeLaTeX`，最后为`xduugtp`文档类传入`overleaf`参数，即将`xduugtp.tex`中
+
+```latex
+\documentclass{xduugtp}
+```
+
+改为
+
+```latex
+\documentclass[overleaf]{xduugtp}
+```
+
+后即可正常编译。
+
+### TeXPage编译
+
+用户首先根据[TeXPage](#texpage)中关于字体安装的介绍安装好字体，再点击右上角的设置按钮修改LaTeX编译器为`XeLaTeX`，最后为`xduugtp`文档类传入`texpage`参数，即将`xduugtp.tex`中
+
+```latex
+\documentclass{xduugtp}
+```
+
+改为
+
+```latex
+\documentclass[texpage]{xduugtp}
+```
+
+后即可正常编译。
+
+## 参考文献引用
+
+在开题报告表中，一般仅国内外研究现状处会出现参考文献引用，因此用户在撰写国内外研究现状时可以直接引用参考文献，对应的参考文献列表会自动出现在国内外研究现状后，无需用户干预，例如：
+
+```latex
+测试引用\cite{ChangHTD19,WangZSS21,GongL21}是否正常。
+```
+
+已添加部分常用类型参考文献条目样例至`xduugtp.bib`，用户可以参考使用，需要注意的是，不要轻易使用分组即`{}`，尤其是`author`字段。参考文献样式符合已于2015年12月1日实施的国家标准《信息与文献 参考文献着录规则》（标准号[GB/T 7714-2015](http://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D8055ED3A7E05397BE0A0AB82A)），用户可以自行下载相应标准查看示例。用户可以使用[dblp](https://dblp.org/)生成的bib条目，[百度学术](https://xueshu.baidu.com/)和[Google Scholar](https://scholar.google.com.hk/)导出的bib文件不是很规范，经常有很大问题，感兴趣的可以去[BibTeX format explained](https://www.bibtex.com/g/bibtex-format/)了解bib文件的合法格式，遇到[dblp](https://dblp.org/)没有的条目，可以手动整理。
+
+在[btxdoc](https://mirrors.ustc.edu.cn/CTAN/biblio/bibtex/base/btxdoc.pdf)文档中第3.1章节指出：
+
+> `article`: An article from a journal or magazine. **Required fields**: author, title, journal, year. **Optional fields**: volume, number, pages, month, note.
+>
+> `book`: A book with an explicit publisher. **Required fields**: author or editor, title, publisher, year. **Optional fields**: volume or number, series, address, edition, month, note.
+>
+> `booklet`: A work that is printed and bound, but without a named publisher or sponsoring institution. Required field: title. **Optional fields**: author, howpublished, address, month, year, note.
+>
+> `conference`: The same as INPROCEEDINGS, included for Scribe compatibility.
+>
+> `inbook`: A part of a book, which may be a chapter (or section or whatever) and/or a range of pages. **Required fields**: author or editor, title, chapter and/or pages, publisher, year. **Optional fields**: volume or number, series, type, address, edition, month, note.
+>
+> `incollection`: A part of a book having its own title. **Required fields**: author, title, booktitle, publisher, year. **Optional fields**: editor, volume or number, series, type, chapter, pages, address, edition, month, note.
+>
+> `inproceedings`: An article in a conference proceedings. **Required fields**: author, title, booktitle, year. **Optional fields**: editor, volume or number, series, pages, address, month, organization, publisher, note.
+>
+> `manual`: Technical documentation. Required field: title. **Optional fields**: author, organization, address, edition, month, year, note.
+>
+> `mastersthesis`: A Master’s thesis. **Required fields**: author, title, school, year. **Optional fields**: type, address, month, note.
+>
+> `misc`: Use this type when nothing else fits. **Required fields**: none. **Optional fields**: author, title, howpublished, month, year, note.
+>
+> `phdthesis`: A PhD thesis. **Required fields**: author, title, school, year. **Optional fields**: type, address, month, note.
+>
+> `proceedings`: The proceedings of a conference. **Required fields**: title, year. **Optional fields**: editor, volume or number, series, address, month, organization, publisher, note.
+>
+> `techreport`: A report published by a school or other institution, usually numbered within a series. **Required fields**: author, title, institution, year. **Optional fields**: type, number, address, month, note.
+>
+> `unpublished`: A document having an author and title, but not formally published. **Required fields**: author, title, note. **Optional fields**: month, year.
+
+在示例文件中已经提供了若干个条目供参考。需要注意的是，无论中英文，每个作者均使用`and`连接。除非文献卷号、期号和页码均无，否则不必提供DOI选项。对于网页链接，使用`misc`类型条目，填写`author`、`title`、`howpublished`和`year`选项即可。
+
+## 字体形状与字体系列
+
+本项目模板正文默认使用中易宋体和Times New Roman，支持常用的字体形状如意大利和倾斜，支持常见的字体系列如加宽加粗。
+
+对于中易宋体，意大利形状对应中易楷体，倾斜形状对应中易宋体伪斜体，加宽加粗系列对应中易宋体伪粗体。其中，参考[fontspec.pdf](https://mirrors.ustc.edu.cn/CTAN/macros/unicodetex/latex/fontspec/fontspec.pdf)中的示例，设置倾斜程度为`0.2`，参考清华大学学位论文模板[thuthesis.dtx](https://mirrors.ustc.edu.cn/CTAN/macros/latex/contrib/thuthesis/thuthesis.dtx)，设置粗细程度为`3`。
+
+对于Times New Roman，意大利形状及加宽加粗系列均有对应的Times New Roman字体文件，倾斜形状与意大利形状一致，因此无需伪斜体和伪粗体。
+
+字体形状和字体系列可以组合使用，例如：
+
+```latex
+意大利形状\textit{测试ABCabc123}
+倾斜形状\textsl{测试ABCabc123}
+加宽加粗系列\textbf{测试ABCabc123}
+加宽加粗系列叠加意大利形状\textbf{\textit{测试ABCabc123}}
+加宽加粗系列叠加倾斜形状\textbf{\textsl{测试ABCabc123}}
+强调\emph{测试ABCabc123}
+```
+
+## 签名图像
+
+由于部分用户线上进行开题，教师无法现场手写签名，故支持签名图像替代手写签名。
+
+用户需要自行制作好签名图像，推荐处理成字迹全黑且背景透明，并以`.png`格式存储。此外需要将图片四周的空白裁掉，尽量减小字迹与四周的间距。用户在主目录新建`figures`文件夹，将准备好的签名图像放入其中。
+
+用户在`xduugtp.tex`中将签名图像相关的以`\renewcommand`开头的语句取消注释，现场手写签名的保持注释状态即可。每个签名图像使用`\sign{}`添加，其中分组内为签名图像文件名，无需扩展名且无需路径。
+
+# 模板来源
+
+模板参照[西安电子科技大学教务处](https://jwc.xidian.edu.cn/info/1022/10853.htm)提供的Microsoft Word模板进行开发，建议用户使用前下载最新的Microsoft Word模板，对比MD5是否有变化，如有变化可以提issue请求更新模板，如无变化，可以检查下XeLaTeX模板与Microsoft Word模板是否一致。
+
+MD5：58B9A670911EF51659F1CB86B45E03B8
+
+# 版本记录
+
+- `2022-01-02` [`v0.1.0`](https://github.com/note286/xduugtp/releases/tag/v0.1.0) 新增西电本科生开题报告XeLaTeX模板。
+
+# 免责声明
+
+本模板的发布遵守[LaTeX Project Public License 1.3c](http://www.latex-project.org/lppl.txt)以及其后的最新版本，使用前请认真阅读协议内容。
+
+本模板为作者个人制作，使用仅供参考，任何由于使用本模板而引起的任何问题均与本模板作者无关。
+
+任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵守[LaTeX Project Public License 1.3c](http://www.latex-project.org/lppl.txt)协议以及其后的最新版本。由于违犯协议而引起的任何纠纷争端均与本模板作者无关。
+
+# 作者
+
+- [@note286](https://github.com/note286)
