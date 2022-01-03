@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.2, created by @note286, published in https://note286.github.io/xduugtp/]
+\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.3, created by @note286, published in https://note286.github.io/xduugtp/]
 
 % overleaf
 \newif\ifoverleaf\overleaffalse
@@ -82,6 +82,7 @@
     ]
   % 定义黑体字体
   \newCJKfontfamily\heiti{SimHei}[BoldFont={SimHei},BoldFeatures={FakeBold=\FakeBoldValue}]
+  \newfontfamily\enheiti{SimHei}[BoldFont={SimHei},BoldFeatures={FakeBold=\FakeBoldValue}]
 \fi
 
 % 设置各级标题样式
@@ -137,7 +138,7 @@
   \end{center}
   \vspace*{-23pt}
   \begin{center}
-  \heiti\zihao{-3}
+  \enheiti\heiti\zihao{-3}
   （\class{}届）
   \end{center}
   % 个人信息
