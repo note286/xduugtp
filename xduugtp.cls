@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.3, created by @note286, published in https://note286.github.io/xduugtp/]
+\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.4, created by @note286, published in https://note286.github.io/xduugtp/]
 
 % overleaf
 \newif\ifoverleaf\overleaffalse
@@ -26,6 +26,14 @@
 \RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0cm,headsep=0cm,headheight=0cm]{geometry}
 % 参考文献引用
 \RequirePackage[sort&compress,square,super,comma]{natbib}
+\RequirePackage{gbt7714}
+\@ifpackagelater{gbt7714}{2020/03/04}
+  {\PassOptionsToPackage{numbers}{natbib}}
+  {\PassOptionsToPackage{numbers}{gbt7714}}
+\newcommand\ckwx{}
+\@ifpackagelater{gbt7714}{2020/03/04}
+  {\renewcommand\ckwx{\bibliographystyle{gbt7714-numerical}}}
+  {}
 \setlength{\bibsep}{0pt}
 % 签名图片
 \RequirePackage{graphicx}
@@ -238,7 +246,7 @@
 \newenvironment{yjxz}
   {\begin{mybox2}}
   {\vspace*{8pt}
-  \bibliographystyle{gbt7714-numerical}
+  \ckwx
   \bibliography{xduugtp}
   \end{mybox2}}
 
