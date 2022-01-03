@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.1, created by @note286, published in https://note286.github.io/xduugtp/]
+\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.2, created by @note286, published in https://note286.github.io/xduugtp/]
 
 % overleaf
 \newif\ifoverleaf\overleaffalse
@@ -14,6 +14,8 @@
 \LoadClass[a4paper,zihao=-4,fontset=none]{ctexart}
 % 书签
 \RequirePackage[bookmarksnumbered,hidelinks]{hyperref}
+% URL自动断行
+\RequirePackage{xurl}
 % 绘制边框
 \RequirePackage[most]{tcolorbox}
 % 条件判断
