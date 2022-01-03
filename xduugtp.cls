@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{xduugtp}[2022/01/02 Xidian University Undergraduate Thesis Proposal class, v0.1.0, created by @note286, published in https://note286.github.io/xduugtp/]
+\ProvidesClass{xduugtp}[2022/01/03 Xidian University Undergraduate Thesis Proposal class, v0.1.1, created by @note286, published in https://note286.github.io/xduugtp/]
 
 % overleaf
 \newif\ifoverleaf\overleaffalse
@@ -185,15 +185,15 @@
 }
 
 % 定义边框边距和线宽
-\newcommand\boxmargin{5pt}
-\newcommand\boxrule{1pt}
+\newlength\boxmargin
+\setlength{\boxmargin}{5pt}
+\newlength\boxrule
+\setlength{\boxrule}{1pt}
 
-\newtcolorbox{mybox1}{
+\tcbset{
   standard jigsaw,
   sharp corners=all,
   colframe=black,
-  breakable,
-  height fixed for=first and middle,
   opacityback=0,
   boxsep=0pt,
   boxrule=\boxrule,
@@ -201,52 +201,35 @@
   bottom=\boxmargin,
   left=\boxmargin,
   right=\boxmargin,
-  before upper={\setlength{\parindent}{2em}\linespread{1}\fontsize{12}{20}\selectfont}
-}
-
-\newtcolorbox{mybox2}{
-  standard jigsaw,
-  sharp corners=all,
-  colframe=black,
-  breakable,
-  height fixed for=all,
-  height fill=maximum,
-  opacityback=0,
-  boxsep=0pt,
-  boxrule=\boxrule,
-  top=\boxmargin,
-  bottom=\boxmargin,
-  left=\boxmargin,
-  right=\boxmargin,
-  before upper={\setlength{\parindent}{2em}\linespread{1}\fontsize{12}{20}\selectfont}
-}
-
-\newtcolorbox{mybox3}{
-  standard jigsaw,
-  sharp corners=all,
-  colframe=black,
-  height=.5\textheight+0.5pt,
-  opacityback=0,
-  boxsep=0pt,
-  boxrule=\boxrule,
-  top=\boxmargin,
-  bottom=\boxmargin,
-  left=\boxmargin,
-  right=\boxmargin,
-  space to upper,
-  lower separated=false,
-  halign lower=flush right,
   beforeafter skip=0pt,
   before upper={\setlength{\parindent}{2em}\linespread{1}\fontsize{12}{20}\selectfont}
 }
 
+\newtcolorbox{mybox1}{
+  breakable,
+  height fixed for=first and middle
+}
+
+\newtcolorbox{mybox2}{
+  breakable,
+  height fixed for=all,
+  height fill=maximum
+}
+
+\newtcolorbox{mybox3}{
+  height=.5\textheight+.5\boxrule,
+  space to upper,
+  lower separated=false,
+  halign lower=flush right
+}
+
 \newenvironment{mcly}
   {\begin{mybox1}}
-  {\end{mybox1}}
+  {\end{mybox1}
+  \vspace*{-\boxrule}}
 
 \newenvironment{yjmdyy}
-  {\vspace*{-\baselineskip-\boxrule}
-  \begin{mybox2}}
+  {\begin{mybox2}}
   {\end{mybox2}}
 
 \newenvironment{yjxz}
@@ -263,7 +246,7 @@
 \newenvironment{gzjd}
   {\begin{mybox1}}
   {\end{mybox1}
-  \vspace*{-\baselineskip-\boxrule}}
+  \vspace*{-\boxrule}}
 
 \newenvironment{zbgz}
   {\begin{mybox2}}

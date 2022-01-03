@@ -356,6 +356,7 @@ MD5：58B9A670911EF51659F1CB86B45E03B8
 
 # 版本记录
 
+- `2022-01-03` [`v0.1.1`](https://github.com/note286/xduugtp/releases/tag/v0.1.1) 适配最新版tcolorbox宏包。
 - `2022-01-02` [`v0.1.0`](https://github.com/note286/xduugtp/releases/tag/v0.1.0) 新增西电本科生开题报告XeLaTeX模板。
 
 # 免责声明
