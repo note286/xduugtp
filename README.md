@@ -1,6 +1,13 @@
-![Xidian University](xidian.png)
-
-[![GitHub](https://img.shields.io/github/license/note286/xduugtp)](https://github.com/note286/xduugtp/blob/main/LICENSE) [![GitHub Repo stars](https://img.shields.io/github/stars/note286/xduugtp)](https://github.com/note286/xduugtp) [![GitHub issues](https://img.shields.io/github/issues/note286/xduugtp)](https://github.com/note286/xduugtp/issues?q=is%3Aopen+is%3Aissue) [![GitHub closed issues](https://img.shields.io/github/issues-closed/note286/xduugtp)](https://github.com/note286/xduugtp/issues?q=is%3Aissue+is%3Aclosed) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/note286/xduugtp)](https://github.com/note286/xduugtp/commits/main) [![GitHub last commit](https://img.shields.io/github/last-commit/note286/xduugtp)](https://github.com/note286/xduugtp/commits/main) [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/note286/xduugtp)](https://github.com/note286/xduugtp/tags)
+<p align="center"><a href="https://github.com/note286/xduugtp"><img src="logo.png"></a></p>
+<p align="center">
+<a href="https://github.com/note286/xduugtp/blob/main/LICENSE"><img src="https://img.shields.io/github/license/note286/xduugtp"></a>
+<a href="https://github.com/note286/xduugtp"><img src="https://img.shields.io/github/stars/note286/xduugtp"></a>
+<a href="https://github.com/note286/xduugtp/issues?q=is%3Aopen+is%3Aissue"><img src="https://img.shields.io/github/issues/note286/xduugtp"></a>
+<a href="https://github.com/note286/xduugtp/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed/note286/xduugtp"></a>
+<a href="https://github.com/note286/xduugtp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/note286/xduugtp"></a>
+<a href="https://github.com/note286/xduugtp/commits/main"><img src="https://img.shields.io/github/last-commit/note286/xduugtp"></a>
+<a href="https://github.com/note286/xduugtp/tags"><img src="https://img.shields.io/github/v/tag/note286/xduugtp"></a>
+</p>
 
 # 目录
 
