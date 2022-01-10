@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{xduugtp}[2022/01/09 Xidian University Undergraduate Thesis Proposal class, v0.2.0, created by @note286, published in https://note286.github.io/xduugtp/]
+\ProvidesClass{xduugtp}[2022/01/10 Xidian University Undergraduate Thesis Proposal class, v0.3.0, created by @note286, published in https://note286.github.io/xduugtp/]
 
 % overleaf
 \newif\ifoverleaf\overleaffalse
@@ -37,7 +37,7 @@
 \setlength{\bibsep}{0pt}
 % 签名图片
 \RequirePackage{graphicx}
-\graphicspath{{figures/}}
+\graphicspath{{figures/}{figures/sign/}}
 % 浮动标题
 \RequirePackage[labelsep=quad]{caption}
 \setlength{\abovecaptionskip}{6bp}
@@ -84,6 +84,9 @@
 % 定义签名命令
 \newcommand\zdjsqm{}
 \newcommand\xyshqm{}
+% 定义手写日期命令
+\newcommand\zdjsqmrq{年\qquad 月\qquad 日}
+\newcommand\xyshqmrq{年\qquad 月\qquad 日}
 
 % 设置页面样式为空
 \pagestyle{empty}
@@ -299,14 +302,14 @@
 \newenvironment{zdjsyj}
   {\begin{mybox3}}
   {\tcblower\linespread{1}\fontsize{12}{30}\selectfont
-  签名\makebox[6em][l]{\zdjsqm}\\
-  年\qquad 月\qquad 日
+  签名\quad\makebox[5em][l]{\zdjsqm}\\
+  \zdjsqmrq
   \end{mybox3}}
 
 \newenvironment{xyshyj}
   {\vspace*{-\boxrule}
   \begin{mybox3}}
   {\tcblower\linespread{1}\fontsize{12}{30}\selectfont
-  签名\makebox[6em][l]{\xyshqm}\\
-  年\qquad 月\qquad 日
+  签名\quad\makebox[5em][l]{\xyshqm}\\
+  \xyshqmrq
   \end{mybox3}}
