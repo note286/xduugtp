@@ -154,7 +154,9 @@ sudo cp simhei.ttf simkai.ttf simsun.ttc times.ttf timesbd.ttf timesbi.ttf times
 
 ## 下载与编辑
 
-请点击[下载](https://github.com/note286/xduugtp/archive/refs/heads/main.zip)压缩包或[克隆](x-github-client://openRepo/https://github.com/note286/xduugtp)该仓库，用户可直接修改`.tex`和`.bib`等类型文件来进行研究生学位论文开题报告表的撰写。具体来说，用户通过编辑`xduugtp.tex`和`xduugtp.bib`文件来撰写论文内容。此外，`xduugtp.cls`文件请不要修改。
+请点击[下载](https://github.com/note286/xduugtp/archive/refs/heads/main.zip)压缩包或[克隆](x-github-client://openRepo/https://github.com/note286/xduugtp)该仓库，当用户访问GitHub不便时，可以选择从国内GitHub镜像网站点击[下载](https://shrill-pond-3e81.hunsh.workers.dev/https://github.com/note286/xduugtp/archive/refs/heads/main.zip)压缩包。
+
+用户可直接修改`.tex`和`.bib`等类型文件来进行研究生学位论文开题报告表的撰写。具体来说，用户通过编辑`xduugtp.tex`和`xduugtp.bib`文件来撰写论文内容。此外，`xduugtp.cls`文件请不要修改。
 
 其中，除指导教师意见和学院审核意见这两部分仅支持单页内容的撰写，其他部分均支持自动分页，无需用户手动分页。
 
