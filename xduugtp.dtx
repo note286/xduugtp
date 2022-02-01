@@ -1,0 +1,1294 @@
+% \iffalse
+%<*driver>
+\ProvidesFile{xduugtp.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}
+%<class>\ProvidesClass{xduugtp}
+%<*class>
+[2022/02/01 v1.0.0 Xidian University Undergraduate Thesis Proposal class]
+%</class>
+%<*driver>
+\documentclass{ctxdoc}
+\usepackage{tocloft}
+\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsubsubsecindent}{3em}
+\setlength{\cftparaindent}{4.5em}
+\setcounter{tocdepth}{4}
+\setmonofont{Latin Modern Mono}
+\usepackage{hologo}
+\usepackage[os=win]{menukeys}
+\renewmenumacro{\menu}[>]{roundedmenus}
+\renewmenumacro{\directory}[/]{hyphenatepaths}
+\usepackage{listings}
+\lstset{
+  backgroundcolor = \color{lightgray!30},
+  keywordstyle    = \color{blue},
+  stringstyle     = \color{brown},
+  basicstyle      = {\small\ttfamily},
+  breaklines      = true,
+  tabsize         = 4,
+  gobble          = 2,
+  numbers         = left,
+  numberstyle     = \tiny,
+  frame           = single,
+  xleftmargin     = \ccwd,
+  numbersep       = \ccwd,
+  columns         = fullflexible
+}
+\usepackage{fetamont}
+\usepackage{xurl}
+\usepackage{xspace}
+\xspaceaddexceptions{。？！，、；：“”‘’—….－-～·《》<>＿}
+\usepackage{multirow}
+\usepackage{makecell}
+% 交叉引用
+\newcommand{\secref}[1]{第\xspace\ref{#1}\xspace 节}
+\newcommand{\tableref}[1]{\tablename\xspace\ref{#1}\xspace}
+% 文档类选项
+\newcommand{\optx}[1]{\xspace\opt{#1}\xspace}
+% /name LaTeX3控制序列
+\newcommand{\csx}[1]{\xspace\cs{#1}\xspace}
+% /name 传统LaTeX2e命令
+\newcommand{\tnx}[1]{\xspace\tn{#1}\xspace}
+%<name> LaTeX3 键值
+\newcommand{\metax}[1]{\xspace\meta{#1}\xspace}
+% {<name>} LaTeX2e 参数
+\newcommand{\argx}[1]{\xspace\Arg{#1}\xspace}
+% [<name>] LaTeX2e 可选参数
+\newcommand{\oargx}[1]{\xspace\Arg{#1}\xspace}
+% 文件
+\newcommand{\filex}[1]{\xspace\texttt{#1}\xspace}
+% 环境
+\newcommand{\envx}[1]{\xspace\env{#1}\xspace}
+% 宏包
+\newcommand{\pkgx}[1]{\xspace\pkg{#1}\xspace}
+% 文档类
+\newcommand{\clsx}[1]{\xspace\cls{#1}\xspace}
+% 目录
+\newcommand{\dirx}[1]{\xspace\directory{#1}\xspace}
+% 菜单
+\newcommand{\menux}[1]{\xspace\menu{#1}\xspace}
+% 值
+\newcommand{\valuex}[1]{\xspace\texttt{#1}\xspace}
+% 命令
+\newcommand{\cmdx}[1]{\xspace\texttt{#1}\xspace}
+% 链接
+\newcommand{\footurl}[1]{\footnote{\url{#1}}}
+\newcommand{\ctanurl}[1]{\href{https://mirrors.ustc.edu.cn/CTAN/#1}{\ttfamily CTAN://#1}}
+\newcommand{\footctan}[1]{\footnote{\ctanurl{#1}}}
+\newcommand{\htmlpre}[1]{\href{https://htmlpreview.github.io/?#1}{\ttfamily #1}}
+% logo
+\newcommand{\xduugtp}{{\bfseries\ffmfamily XDUUGTP}}
+\newcommand{\texlive}{\TeX{} Live}
+\newcommand{\mactex}{Mac\TeX{}}
+\newcommand{\miktex}{\xspace\hologo{MiKTeX}\xspace}
+\newcommand{\bibtex}{\hologo{BibTeX}}
+% book
+\newcommand{\lshortb}{《一份（不太）简短的\LaTeXe{}介绍》}
+\newcommand{\insltxb}{《一份简短的关于\LaTeX{}安装的介绍》}
+\newcommand{\symbolb}{《Comprehensive \LaTeX{} Symbol List》}
+\begin{document}
+\DocInput{\jobname.dtx}
+\IndexLayout
+\PrintChanges
+\PrintIndex
+\end{document}
+%</driver>
+% \fi
+% \CheckSum{378}
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+% \DoNotIndex{\par,\\}
+% \GetFileInfo{\jobname.dtx}
+% \title{\bfseries\xduugtp{}文档类手册}
+% \author{\href{https://github.com/note286/}{note286}}
+% \date{\href{https://github.com/note286/xduugtp/releases/tag/\fileversion/}{\fileversion}~(\filedate)}
+% \maketitle
+% \thispagestyle{empty}
+% \begin{abstract}
+% \xduugtp{}文档类是面向西安电子科技大学本科生的
+% 毕业论文（设计）开题报告\LaTeX{}模板，
+% 支持\XeLaTeX{}编译方式，
+% 支持Windows、macOS、GNU/Linux、Overleaf和TeXPage全平台，
+% 支持插入签名图像，
+% 支持参考文献引用，
+% 具有丰富的说明文档和使用示例，
+% 功能均有据可依，来源可靠。
+% \end{abstract}
+% \renewcommand\abstractname{免责声明}
+% \begin{abstract}
+% \noindent
+% \begin{enumerate}
+% \item 本模板的发布遵守
+% \LaTeX{} Project Public License\footurl{https://www.latex-project.org/lppl.txt}，
+% 使用前请认真阅读协议内容。
+% \item 本模板为作者根据西安电子科技大学教务处提供的
+% Microsoft Word模板\footurl{https://jwc.xidian.edu.cn/info/1022/10853.htm}编写而成，
+% 旨在供西安电子科技大学本科生撰写毕业论文（设计）开题报告使用。
+% 建议用户使用前下载最新的Microsoft Word模板，
+% 对比MD5\footnote{\ttfamily MD5:~58B9A670911EF51659F1CB86B45E03B8}是否有变化，
+% 如有变化可以提Issue请求更新模板。
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，
+% 请严格遵守\LaTeX{} Project Public License，
+% 由于违犯协议而引起的任何纠纷争端均与本模板作者无关。
+% \end{enumerate}
+% \end{abstract}
+% \clearpage
+% \tableofcontents
+% \clearpage
+% \section{模板介绍}
+% \xduugtp{} (Xidian University Undergraduate Thesis Proposal)
+% 是为了帮助西安电子科技大学本科生撰写毕业论文（设计）开题报告而编写的\LaTeX{}论文模板。
+% \par
+% 本文档将尽量完整的介绍模板的使用方法，
+% 如有不清楚之处，或者想提出改进建议，
+% 可以在GitHub Issues\footurl{https://github.com/note286/xduugtp/issues/}
+% 参与讨论或提问。
+% 注意，不同的问题开多个Issue，不要堆在一个Issue里。
+% \par
+% 虽然我感谢贡献，但我认为对于本模板，
+% pull requests通常不是一个好方法（除非已经讨论并同意更改）。
+% 模板的稳定性非常重要，这意味着对模板的更改必然非常保守。
+% 这也意味着在进行任何更改之前必须进行大量讨论。
+% 因此，如果您确实决定发布pull requests，请记住这一点：
+% 我确实欣赏新想法，但不能总是将它们集成到模板中，
+% 我很可能会拒绝以这种方式进行的更新。
+% \par
+% 模板的作用在于减少写作过程中格式调整的时间。
+% 前提是遵守模板的用法，
+% 否则即便用了\xduugtp{}也难以保证输出的文档符合学校规范。
+% 此外，下面列出了一些常用的参考资料供用户学习：
+% \begin{enumerate}
+% \item \lshortb\footctan{info/lshort/chinese/lshort-zh-cn.pdf}
+% \item \insltxb\footctan{info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf}
+% \item \symbolb\footctan{info/symbols/comprehensive/symbols-a4.pdf}
+% \end{enumerate}
+% \par
+% 用户如果遇到bug，或者发现与学校要求不一致，可以尝试以下办法：
+% \begin{enumerate}
+% \item 将模板升级到最新；
+% \item 在GitHub Issues中报告bug。
+% \end{enumerate}
+% \section{贡献者}
+% \xduugtp{}的开发过程中，主要的维护者为
+% \href{https://github.com/note286/}{\ttfamily @note286}。
+% 同时，也要感谢所有在GitHub和睿思\footurl{http://rs.xidian.edu.cn/}上提出问题的同学、老师们。
+% \xduugtp{}的持续发展，离不开你们的帮助与支持。
+% \section{致谢}
+% 在学习文学编程的过程中，
+% 《在\LaTeX{}中进行文学编程》\footurl{https://liam.page/2015/01/23/literate-programming-in-latex/}
+% 和《Good things come in little packages: An introduction to writing .ins and .dtx files》\footurl{https://www.tug.org/TUGboat/tb29-2/tb92pakin.pdf}
+% 提供了很大帮助，
+% \filex{ctex.dtx}\footctan{language/chinese/ctex/ctex.dtx}提供了丰富的示例供学习参考。
+% 在文档的编写过程中，参考了\filex{ctex.dtx}、
+% \filex{install-latex-guide-zh-cn.tex}\footctan{info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.tex}
+% 和\filex{thuthesis.dtx}\footctan{macros/latex/contrib/thuthesis/thuthesis.dtx}。
+% \section{安装与编译}
+% 首先介绍\LaTeX{}套装安装，
+% 其次介绍字体安装，
+% 接着介绍模板下载与编辑，
+% 最后介绍常见编译方式。
+% \subsection{\LaTeX{}套装安装}
+% \label{appins}
+% 推荐Windows和GNU/Linux平台使用\texlive{}，macOS平台使用\mactex{}，跨版本升级均需要卸载旧版。
+% \par
+% 支持\miktex{}，\miktex{}用户需要额外
+% 安装Perl\footurl{https://strawberryperl.com/}以便于使用\cmdx{latexmk}，
+% 可通过运行\cmdx{perl -v}来检查是否已安装Perl。
+% 此外，\miktex{}用户需自行打开\miktex{}控制台更新所有包。
+% 本文档后续主要介绍\texlive{}与\mactex{}。
+% \subsubsection{旧版本卸载}
+% 本项目模板仅在最新版\texlive{}/\mactex{}通过测试，其他旧版本并未实际进行测试。
+% 建议安装最新版\LaTeX{}发行版套装并更新所有包，
+% 如果已安装\texlive{}或\mactex{}并且能够编译，用户可以选择不升级套装，不更新包。
+% \par
+% Windows平台卸载方法为管理员身份直接运行\dirx{C:/texlive/2021/tlpkg/installer/uninst.bat}，
+% 不同版本和安装位置请按需修改目录，更多介绍请参考\insltxb{}第1.2节，
+% GNU/Linux平台卸载方法请参考\insltxb{}第2.2节，
+% macOS上卸载方法请参考Uninstalling \mactex\footurl{https://www.tug.org/mactex/uninstalling.html}。
+% \subsubsection{新版本安装}
+% 校内睿思下载地址：
+% \texlive{}\footurl{http://rs.xidian.edu.cn/forum.php?mod=viewthread&tid=1094234}
+% 和\mactex{}\footurl{http://rs.xidian.edu.cn/forum.php?mod=viewthread&tid=1094235}，
+% 中科大源校外下载地址：
+% \texlive\footctan{systems/texlive/Images/texlive.iso}
+% 和\mactex\footctan{systems/mac/mactex/MacTeX.pkg}。
+% \par
+% 后续如无特殊情况，仅以Windows举例，其他操作系统上类似。
+% 右键选择下载好的\filex{.iso}文件，选择\menux{打开方式>Windows资源管理器}，
+% 然后右键以管理员身份运行\filex{install-tl-windows.bat}，保持默认配置即可。
+% 如没有本地阅读文档的需求，安装时可以不勾选安装文档的选项，
+% 这样会减少大约一半的磁盘占用空间，
+% 具体来说，在\texlive{}安装窗口中点击左下角\menux{Advanced}，
+% 取消勾选\menux{安装字体/宏包文档目录树}和\menux{安装字体/宏包源码目录树}即可不安装文档和源码。
+% 更多\LaTeX{}环境安装与配置请阅读\insltxb{}。
+% \subsubsection{更新包管理器和所有包}
+% 建议更新所有包至最新版，
+% Windows平台上使用管理员身份运行cmd，
+% GNU/Linux和macOS需要使用\cmdx{sudo}。
+% 如果遇到更新失败，重新执行一遍。
+% \begin{lstlisting}
+% tlmgr repository set https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+% tlmgr update --all --self
+% \end{lstlisting}
+% \subsection{字体安装}
+% \label{fontins}
+% 考虑到可能存在版权问题，故不提供字体文件或字体下载链接。
+% \par
+% 可以通过运行以下命令来查看编译得到的pdf文件字体信息，
+% 包括字体名称和字体嵌入等情况。
+% \begin{lstlisting}
+% pdffonts xduugtp.pdf
+% \end{lstlisting}
+% \subsubsection{Windows}
+% Windows平台无需手动配置字体，所需字体Windows操作系统已内置。
+% \subsubsection{GNU/Linux}
+% \label{fontlinux}
+% 由于默认情况下中易宋体的意大利形状对应的是中易楷体，
+% 因此中文字体除中易宋体和中易黑体外，还需要中易楷体。
+% \par
+% 用户可以从Windows操作系统字体库中拷贝出\tableref{fontinfo}中所示的字体文件至GNU/Linux，
+% 其中中文字体文件位于\dirx{C:/Windows/Fonts}处，
+% Times New Roman字体文件位于\dirx{C:/Windows/Fonts/Times New Roman}处。
+% 用户在查找字体时，可以根据\tableref{fontinfo}中所示的Windows系统内字体名称来查找，
+% 找到后复制该字体，粘贴至某个空白文件夹即可得到对应的字体文件，
+% 然后将所有的字体文件传输至GNU/Linux的\dirx{/usr/share/fonts}目录下。
+% 然后就可以根据\secref{build}里的方法去编译了。
+% \begin{table}
+% \centering
+% \caption{\xduugtp{}所需字体}
+% \label{fontinfo}
+% \begin{tabular}{crl}
+% \toprule
+% 字体名称 & 字体文件名 & Windows系统内字体名称 \\
+% \midrule
+% 中易黑体 & \filex{simhei.ttf} & SimHei Regular/黑体常规 \\
+% 中易楷体 & \filex{simkai.ttf} & KaiTi Regular/楷体常规 \\
+% 中易宋体 & \filex{simsun.ttc} & SimSun Regular/宋体常规 \\
+% \multirowcell{4}{Times New Roman} & \filex{times.ttf} & Times New Roman Regular/常规 \\
+% & \filex{timesbd.ttf} & Times New Roman Bold/粗体 \\
+% & \filex{timesbi.ttf} & Times New Roman Bold Italic/粗斜体 \\
+% & \filex{timesi.ttf} & Times New Roman Italic/斜体 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% \subsubsection{macOS}
+% 参考\secref{fontlinux}从Windows平台提取字体文件，然后在macOS上双击安装字体文件即可。
+% 注意，虽然macOS内置了Times New Roman字体，
+% 但是该内置字体版本过于老旧，有缺字的现象，
+% 建议将\tableref{fontinfo}中所示的字体文件全部安装。
+% 然后就可以根据\secref{build}里的方法去编译了。
+% \subsubsection{Overleaf}
+% \label{overleaffont}
+% 在Overleaf\footurl{https://cn.overleaf.com/}平台使用时，
+% 由于Overleaf是安装在GNU/Linux上的最新版的\texlive{}，
+% 用户无需考虑\LaTeX{}套装版本问题，仅需要安装字体即可，
+% 用户首先根据\secref{dledit}中的方法下载本仓库，
+% 再根据\secref{fontlinux}中的方法得到字体文件。
+% \par
+% 在Overleaf左上角点击\menux{创建新项目}，选择\menux{上传项目}，
+% 将压缩包上传至Overleaf，会自动进入该模板项目。
+% 点击左上角\menux{新建目录}按钮，新建一个名为\dirx{fonts}的文件夹，
+% 选中\dirx{fonts}文件夹，点击左上角\menux{上传}按钮将所有的字体文件上传。
+% 最后根据\secref{overleafbuild}配置如何在线编译。
+% \subsubsection{TeXPage}
+% \label{texpagefont}
+% 在TeXPage\footurl{https://www.texpage.com/}平台使用时，
+% 由于TeXPage是安装在GNU/Linux上的最新版的\texlive{}，
+% 用户无需考虑\LaTeX{}套装版本问题，仅需要安装字体即可，
+% 用户首先根据\secref{dledit}中的方法下载本仓库，
+% 再根据\secref{fontlinux}中的方法得到字体文件。
+% \par
+% 在TeXPage首页左上角点击\menux{个人主页}，进入个人主页后，点击左上角\menux{创建}，
+% 选择\menux{上传项目}，将压缩包上传至TeXPage，进入该模板项目。
+% 点击左上角\menux{新建文件夹}按钮，新建一个名为\dirx{fonts}的文件夹，
+% 选中\dirx{fonts}文件夹，点击左上角\menux{上传文件}按钮将所有的字体文件上传。
+% 最后根据\secref{texpagebuild}配置如何在线编译。
+% \subsection{下载与编辑}
+% \label{dledit}
+% 请下载压缩包\footurl{https://github.com/note286/xduugtp/archive/refs/heads/main.zip}，
+% 当用户访问GitHub不便时，可以选择从国内GitHub镜像网站\footurl{https://gh.api.99988866.xyz/}下载压缩包。
+% \par
+% 用户可直接修改\filex{.tex}和\filex{.bib}等类型文件来进行相关内容的撰写。
+% 此外，\filex{.cls}文件请不要修改。
+% \par
+% 其中，除指导教师意见和学院审核意见这两部分仅支持单页内容的撰写，其他部分均支持自动分页，无需用户手动分页。
+% \subsection{编译}
+% \label{build}
+% 在参考\secref{appins}安装了\LaTeX{}套装，
+% 且参考\secref{fontins}安装了缺失字体后，即可编译。
+% 用户可以选择直接使用命令编译，
+% 命令编译时切换到\filex{xduugtp.tex}所在目录执行命令即可。
+% 或者选择合适的\LaTeX{} IDE来调用命令编译，
+% IDE编译时选择\XeLaTeX{}编译方式，参考文献使用\bibtex{}编译。
+% 关于PDF查看器，如果选择命令编译或\LaTeX{} IDE无内置PDF查看器，
+% Windows平台上推荐使用Sumatra PDF Viewer\footurl{https://www.sumatrapdfreader.org/}，
+% macOS平台上推荐Skim\footurl{https://skim-app.sourceforge.io/}，
+% 适当配置即可支持正向同步和反向同步。
+% \subsubsection{命令}
+% 介绍如何使用命令编译，可选择使用latexmk来快速编译或者常规的四次编译。
+% \par
+% \cmdx{latexmk}编译：
+% \begin{lstlisting}
+% latexmk
+% \end{lstlisting}
+% \par
+% 四次编译，即\XeLaTeX{}搭配\bibtex{}：
+% \begin{lstlisting}
+% xelatex -synctex=1 xduugtp
+% bibtex xduugtp
+% xelatex -synctex=1 xduugtp
+% xelatex -synctex=1 xduugtp
+% \end{lstlisting}
+% \par
+% 清理辅助文件：
+% \begin{lstlisting}
+% latexmk -c
+% \end{lstlisting}
+% \par
+% \subsubsection{文本编辑器}
+% 任何一款文本编辑器均可以编辑\filex{.tex}文件，
+% 包括但不限于Sublime Text和Visual Studio Code等。
+% 一些文本编辑器支持安装扩展，
+% 例如Sublime Text可以安装LaTeXTools、
+% Visual Studio Code可以安装LaTeX Workshop
+% 来辅助进行\filex{.tex}文件的编辑，
+% 还提供了一些常用的编译配置。
+% 可以搭配Sumatra PDF Viewer或Skim实现反向同步，
+% 正向同步一般需要文本编辑器或其扩展支持。
+% \par
+% 一些文本编辑器不支持自定义编译功能或者安装扩展，
+% 依然可以使用文本编辑器来编辑\filex{.tex}文件，使用命令来进行编译。
+% \subsubsection{WinEdt}
+% 下载WinEdt\footurl{https://www.winedt.com/}安装包并安装，支持Windows平台。
+% 安装后可以查看Quick Guide\footurl{http://www.winedt.com/download.html\#Quick\_Guide}获取更多关于WinEdt的使用帮助。
+% \par
+% 打开WinEdt后，点击\menux{File>Open}打开\filex{xduugtp.tex}文件。
+% 点击\menux{Option>Execution Modes}，在弹出的面板左侧选择\menux{TeXify}，
+% 在面板左下角点击\menux{Browse for executable}，
+% 依次找到\dirx{C:/texlive/2021/bin/win32/latexmk.exe}文件并点击打开，
+% 如果安装\texlive{}至非默认目录，依情况修改；
+% 将左下角的\menux{Switches}中对应值清空，最后点击面板上的\menux{OK}。
+% \par
+% 在\menux{Toolbar}中\menux{PDF Preview}左侧的按钮下拉菜单中可以切换编译引擎。
+% 完全编译选择\menux{TeXify}，可以自动处理交叉引用和参考文献引用，编译时间较长；
+% 不考虑交叉引用和参考文献引用时，快速编译选择\menux{XeLaTeX}，编译时间较短，
+% 需要参考文献引用时再点击\menux{TeX>BibTeX}编译参考文献，
+% 接着执行两次\menux{XeLaTeX}编译可以生成参考文献列表和参考文献引用。
+% \par
+% 点击\menux{Tools>Erase Output Files}或者\menux{Toolbar}中的\menux{Erase Output Files}按钮，
+% 在弹出的面板中再点击\menux{Delete Now}可以清理辅助文件，
+% 常用于某次报错后清理错误的辅助文件，避免二次报错。
+% \par
+% 可以参考QuickGuide.pdf\footurl{http://www.winedt.com/doc/QuickGuide.pdf}中第2.3节
+% 配置WinEdt默认PDF查看器为Sumatra PDF Viewer，
+% 即点击\menux{Option>Execution Modes}，在弹出的面板选择\menux{PDF Viewer}标签，
+% 将\menux{PDF Viewer Executable}改为\filex{SumatraPDF.exe}，
+% Sumatra PDF Viewer默认安装在\dirx{\%LOCALAPPDATA\%/SumatraPDF}处，
+% 这样就可以使用Sumatra PDF Viewer来查看PDF文件。
+% Sumatra PDF Viewer的反向同步一般WinEdt会自动配置，
+% 如果需要手动配置，在Sumatra PDF Viewer左上角点击\menux{三道杠>设置>选项}，
+% 在最后设置反向搜索命令行中填写
+% \begin{lstlisting}
+% "C:\Program Files\WinEdt Team\WinEdt 10\WinEdt.exe" "[Open(|%f|);SelPar(%l,8);]"
+% \end{lstlisting}
+% 并点击确定即可。
+% \par
+% 注意，由于WinEdt添加新的编译配置较为复杂，
+% 本方法将\menux{TeXify}内的编译引擎由\menux{LaTeX}改为\menux{latexmk}，
+% 并使用了主目录下的\filex{latexmkrc}编译配置。
+% \subsubsection{TeXworks}
+% 下载TeXworks\footurl{https://tug.org/texworks/}安装包并安装，支持Windows，GNU/Linux和macOS平台。安装后可以查看《A short manual for TeXworks》\footurl{https://github.com/TeXworks/manual/releases}获取更多关于TeXworks的使用帮助。
+% \par
+% 打开TeXworks后，点击\menux{编辑>首选项>排版>处理工具}，
+% 点击右下角蓝色加号，在弹出的面板中名称处填写\filex{latexmk}，
+% 程序处点击右侧\menux{浏览}选择\dirx{C:/texlive/2021/bin/win32/latexmk.exe}文件并点击打开，
+% 如果安装\texlive{}至非默认目录，依情况修改，最后点击面板上的\menux{OK}。
+% 选择新建的\menux{latexmk}，点击右侧的蓝色上箭头移动至顶部，
+% 再将内置的\menux{XeLaTeX}和\menux{BibTeX}移动至顶部，
+% 使得\menux{latexmk}、\menux{XeLaTeX}和\menux{BibTeX}位于处理工具的顶部，方便后续切换引擎。
+% 再选择下方的默认，可以将\menux{latexmk}或者\menux{XeLaTeX}设置为默认，最后点击\menux{OK}。
+% \par
+% 点击\menux{文件>打开}，选择\filex{xduugtp.tex}文件，Toolbars左上角可以切换编译引擎。
+% 完全编译选择\menux{latexmk}，可以自动处理交叉引用和参考文献引用，编译时间较长；
+% 不考虑交叉引用和参考文献引用时，快速编译选择\menux{XeLaTeX}，编译时间较短，
+% 需要参考文献引用时切换至\menux{BibTeX}编译参考文献，
+% 接着执行两次\menux{XeLaTeX}编译可以生成参考文献列表和参考文献引用。
+% \par
+% 点击\menux{文件>删除辅助文件}，在弹出的面板中再点击\menux{删除}可以清理辅助文件，
+% 常用于某次报错后清理错误的辅助文件，避免二次报错。
+% \par
+% TeXworks内置了PDF查看器，支持正向同步和反向同步功能，
+% 具体请查看《A short manual for TeXworks》中5.1节。
+% \subsubsection{TeXstudio}
+% 下载TeXstudio\footurl{https://www.texstudio.org/}安装包并安装，
+% 支持Windows，GNU/Linux和macOS平台。
+% 安装后可以查看《TeXstudio : User manual》\footnote{\htmlpre{https://github.com/texstudio-org/texstudio/master/utilities/manual/usermanual_en.html}}获取更多关于TeXstudio的使用帮助。
+% \par
+% 打开TeXstudio后，点击\menux{文件>打开}，选择\filex{xduugtp.tex}文件。
+% 点击\menux{选项>设置TeXstudio>命令}，将\menux{Latexmk}处值改为\valuex{latexmk.exe}，
+% 切换至\menux{构建}标签，将默认编译器改为\menux{Latexmk}或者\menux{XeLaTeX}。
+% \par
+% TeXstudio无法快速切换编译引擎，只能在\menux{选项>设置TeXstudio>构建}里修改默认编译器，
+% 或者点击\menux{工具>命令}里临时运行指定的编译引擎。
+% 完全编译选择\menux{latexmk}，可以自动处理交叉引用和参考文献引用，编译时间较长；
+% 不考虑交叉引用和参考文献引用时，快速编译选择\menux{XeLaTeX}，编译时间较短，
+% 需要参考文献引用时切换至\menux{BibTeX}编译参考文献，
+% 接着执行两次\menux{XeLaTeX}编译可以生成参考文献列表和参考文献引用。
+% \par
+% 点击\menux{工具>清理辅助文件}，
+% 在弹出的面板中选择合适的范围再点击\menux{OK}便可以清理辅助文件，
+% 常用于某次报错后清理错误的辅助文件，避免二次报错。
+% \par
+% TeXstudio内置了PDF查看器，支持正向同步和反向同步功能，
+% 具体请查看《TeXstudio : User manual》中4.10节。
+% \subsubsection{Texmaker}
+% 下载Texmaker\footurl{https://www.xm1math.net/texmaker/}安装包并安装，
+% 支持Windows，GNU/Linux和macOS平台。
+% 安装后可以查看《Texmaker : User manual》\footurl{https://www.xm1math.net/texmaker/doc.html}获取更多关于Texmaker的使用帮助。
+% \par
+% 打开Texmaker后，点击\menux{文件>打开}，选择\filex{xduugtp.tex}文件。
+% 点击\menux{选项>配置Texmaker>命令}，
+% 将\menux{LaTeX-Mk}中对应值改为\filex{latexmk}，点击\menux{OK}。
+% \par
+% 工具栏中可以切换编译引擎。完全编译选择\menux{latexmk}，
+% 可以自动处理交叉引用和参考文献引用，编译时间较长；
+% 不考虑交叉引用和参考文献引用时，快速编译选择\menux{XeLaTeX}，编译时间较短，
+% 需要参考文献引用时切换至\menux{BibTeX}编译参考文献，
+% 接着执行两次\menux{XeLaTeX}编译可以生成参考文献列表和参考文献引用。
+% \par
+% 点击\menux{工具>清除历史记录}，在弹出的面板中再点击\menux{删除文件}可以清理辅助文件，
+% 常用于某次报错后清理错误的辅助文件，避免二次报错。
+% \par
+% Texmaker内置了PDF查看器，支持正向同步和反向同步功能，
+% 具体请查看《Texmaker : User manual》中3.3节。
+% \subsubsection{Overleaf}
+% \label{overleafbuild}
+% 用户首先根据\secref{overleaffont}中关于字体安装的介绍安装好字体，
+% 再点击左上角的\menux{菜单}按钮修改编译器为\menux{XeLaTeX}，
+% 最后为\clsx{xduugtp}文档类传入\optx{overleaf}参数，
+% 即将\filex{xduugtp.tex}中
+% \begin{lstlisting}
+% \documentclass{xduugtp}
+% \end{lstlisting}
+% 改为
+% \begin{lstlisting}
+% \documentclass[overleaf]{xduugtp}
+% \end{lstlisting}
+% 后即可正常编译。
+% \subsubsection{TeXPage}
+% \label{texpagebuild}
+% 用户首先根据\secref{texpagefont}中关于字体安装的介绍安装好字体，
+% 再点击右上角的\menux{设置}按钮修改\menux{LaTeX编译器}为\menux{XeLaTeX}，
+% 最后为\clsx{xduugtp}文档类传入\optx{texpage}参数，即将\filex{xduugtp.tex}中
+% \begin{lstlisting}
+% \documentclass{xduugtp}
+% \end{lstlisting}
+% 改为
+% \begin{lstlisting}
+% \documentclass[texpage]{xduugtp}
+% \end{lstlisting}
+% 后即可正常编译。
+% \section{使用说明}
+% 本手册假定用户已经能处理一般的\LaTeX{}文档，并对\BibTeX{}有一定了解。
+% 如果从未接触过\LaTeX{}，建议先学习相关的基础知识。
+% 想要入门\LaTeX{}或者对\LaTeX{}语法一知半解的请阅读\lshortb{}，
+% 想要查询数学符号的可以在\symbolb{}中搜索。
+% 本项目文档都很详细，请认真阅读本文档。
+% 由于模板升级频繁，在开始使用和提问前，
+% 请确保您已经认真完整地阅读了本文档和示例代码。
+% \subsection{模板选项}
+% \begin{function}[added=2022-01-02]{overleaf}
+% 开启Overleaf平台支持，详情请参考\secref{overleafbuild}。
+% \end{function}
+% \begin{function}[added=2022-01-02]{texpage}
+% 开启TeXPage平台支持，详情请参考\secref{texpagebuild}。
+% \end{function}
+% \subsection{参考文献引用}
+% \label{refcite}
+% 在btxdoc\footctan{biblio/bibtex/base/btxdoc.pdf}文档第3.1章节
+% 描述了\bibtex{}的标准类型的必选域和可选域。
+% 在\secref{refcite}中提到本模板采用的是GB/T 7714-2015，用户可以自行下载相应标准查看示例。
+% 国标中规定了16种参考文献类型，部分类型不是\bibtex{}的标准类型，
+% 此外国标中规定的著录项目多于\bibtex{}的标准域。
+% 因此，强烈建议用户参考gbt7714.pdf\footctan{biblio/bibtex/contrib/gbt7714/gbt7714.pdf}中
+% 关于文献类型和著录项目的描述以及standard.bib\footurl{https://github.com/zepinglee/gbt7714-bibtex-style/blob/master/test/testbst/support/standard.bib}中丰富的示例。
+% \par
+% 百度学术\footurl{https://xueshu.baidu.com/}
+% 和Google Scholar\footurl{https://scholar.google.com.hk/}
+% 导出的bib文件不是很规范，经常有很大问题，
+% 感兴趣的可以去\bibtex{} format explained\footurl{https://www.bibtex.com/g/bibtex-format/}了解bib文件的合法格式。
+% 用户可以使用dblp\footurl{https://dblp.org/}生成的bib条目，
+% 遇到dblp没有的条目，可以参考上述文档和示例自行整理。
+% 已添加部分常用类型参考文献条目样例至\filex{xduugtp.bib}供用户参考。
+% 需要注意的是，不要轻易使用分组即\valuex{\{\}}，尤其是\valuex{author}域。
+% 无论中英文，每个作者均使用\valuex{and}连接。
+% 除非文献卷号、期号和页码均无，否则不必提供DOI域。
+% 对于网页链接，使用\valuex{online}类型，
+% 填写\valuex{author}、\valuex{title}、\valuex{url}和\valuex{urldate}域即可。
+% \par
+% 在开题报告表中，一般仅国内外研究现状处会出现参考文献引用，
+% 因此用户在撰写国内外研究现状时可以直接引用参考文献，
+% 对应的参考文献列表会自动出现在国内外研究现状后，无需用户干预。
+% 本模板已根据学校要求设置了\tnx{cite}生成的引用样式，
+% 直接使用即可符合学校的要求，例如：
+% \begin{lstlisting}
+% 测试引用\cite{ChangHTD19,WangZSS21,GongL21}是否正常。
+% \end{lstlisting}
+% \subsection{字体形状与字体系列}
+% 本项目模板正文默认使用中易宋体和Times New Roman，
+% 支持常用的字体形状如意大利和倾斜，
+% 支持常见的字体系列如加宽加粗。
+% \par
+% 对于中易宋体，意大利形状对应中易楷体，
+% 倾斜形状对应中易宋体伪斜体，
+% 加宽加粗系列对应中易宋体伪粗体。
+% 其中，参考fontspec.pdf\footctan{macros/unicodetex/latex/fontspec/fontspec.pdf}中的示例，
+% 设置倾斜程度为$0.2$，
+% 参考清华大学学位论文模板thuthesis.dtx\footctan{macros/latex/contrib/thuthesis/thuthesis.dtx}，
+% 设置粗细程度为$3$。
+% \par
+% 对于Times New Roman，意大利形状及加宽加粗系列均有对应的Times New Roman字体文件，
+% 倾斜形状与意大利形状一致，因此无需伪斜体和伪粗体。
+% \par
+% 字体形状和字体系列可以组合使用，例如：
+% \begin{lstlisting}
+% 意大利形状\textit{测试ABCabc123}
+% 倾斜形状\textsl{测试ABCabc123}
+% 加宽加粗系列\textbf{测试ABCabc123}
+% 加宽加粗系列叠加意大利形状\textbf{\textit{测试ABCabc123}}
+% 加宽加粗系列叠加倾斜形状\textbf{\textsl{测试ABCabc123}}
+% 强调\emph{测试ABCabc123}
+% \end{lstlisting}
+% \subsection{交叉引用}
+% 本项目模板有图、表、和公式等引用命令，使用方法如下：
+% \begin{lstlisting}
+% 图的具体内容如\figureref{figu1}所示。
+% 表的具体内容如\tableref{tabl1}所示。
+% 公式的具体内容如\equationref{equa1}所示。
+% \end{lstlisting}
+% \subsection{图片}
+% 图片插入时，如果将图片文件放入\dirx{figures}文件夹，
+% 则无需添加路径，直接使用图片文件名即可，甚至扩展名也可以省略不写，可以参考如下示例：
+% \begin{lstlisting}
+% \begin{tpfigure}
+% \includegraphics[width=.3\linewidth]{fig1file}
+% \captionof{figure}{方案开销}
+% \label{fig1}
+% \end{tpfigure}
+% \end{lstlisting}
+% 如果用户需要插入多页pdf文件的某一页，可以使用page参数，例如插入\filex{figfile.pdf}的第2页：
+% \begin{lstlisting}
+% \includegraphics[page=2]{figfile}
+% \end{lstlisting}
+% 另外，本项目模板实测\tnx{textwidth}为\valuex{417.11752pt}，\tnx{textheight}为\valuex{700.50723pt}，
+% 对插图字号有要求的用户画图时可参考这两个数值，避免图片尺寸超过页面可编辑范围。
+% \par
+% 此外，由于开题报告的特殊性，不支持浮动体，
+% 本项目模板自定义\envx{tpfigure}环境来插入图片，图片显示位置即插入位置。
+% \par
+% 对于图片的格式，优先推荐\filex{.tikz}、\filex{.pgf}和\filex{.pdf}格式的图片，不推荐\filex{.png}和\filex{.jpg}等非矢量图片格式。此外，对于已有的\filex{.pdf}格式的图片，不需要转换成\filex{.eps}文件。针对Microsoft Visio等绘图软件，建议使用打印成\filex{.pdf}的方式，再使用\texlive{}自带的\cmdx{pdfcrop}命令进行快速高效裁剪。其中，使用\filex{.tikz}和\filex{.pgf}格式的图片时，用户需要使用\tnx{input}命令而不是\tnx{includegraphics}命令。
+% \subsection{表格}
+% 参考\filex{西安电子科技大学研究生学位论文模板（2015年修订版）-2019.03修订.docx}中关于表格字号的要求，本项目模板已经重定义了表格字号大小为5号，用户无需手动指定字号，可以参考如下示例：
+% \begin{lstlisting}
+% \begin{tptable}
+% \renewcommand{\arraystretch}{1.5}
+% \captionof{table}{这是一个表格}
+% \label{tabl1}
+% \begin{tabular}{|c|c|}
+% \hline
+% 表格 & 表格 \\
+% \hline
+% 表格 & 表格 \\
+% \hline
+% \end{tabular}
+% \end{tptable}
+% \end{lstlisting}
+% 由于开题报告的特殊性，不支持浮动体，本项目模板自定义\envx{tptable}环境来插入表格，表格显示位置即插入位置。
+% \subsection{签名图像}
+% 由于部分用户线上进行开题，教师无法现场手写签名，故支持签名图像替代手写签名。
+% \par
+% 用户需要自行制作好签名图像，推荐处理成字迹全黑且背景透明并以\filex{.png}格式存储，使用纯白色背景并以其他格式如\filex{.jpg}和\filex{.pdf}等格式存储也可。此外需要将图片四周的空白裁掉，尽量减小字迹与四周的间距。将准备好的签名图像放入\dirx{figures/sign}目录下。
+% \par
+% 用户在\filex{xduugtp.tex}中将签名图像相关的以\tnx{renewcommand}开头的语句取消注释，现场手写签名的保持注释状态即可。每个签名图像使用\tnx{sign}添加，其中分组内为签名图像文件名，无需扩展名且无需路径。
+% \par
+% 此外，如果需要打印好再线下填写日期，保持日期相关语句注释状态不变即可。如果需要插入日期手写图像，将对应的日期插入语句取消注释即可，如
+% \begin{lstlisting}
+% \renewcommand\zdjsqmrq{\sign{lisidate}}
+% \end{lstlisting}
+% 如果需要插入电子版的日期，将对应的日期插入语句取消注释即可，如
+% \begin{lstlisting}
+% \renewcommand\zdjsqmrq{2022年1月10日}
+% \end{lstlisting}
+% \StopEventually{}
+% \section{代码实现}
+% \changes{v1.0.0}{2022/02/01}{使用dtx分发}
+% \setlength\parindent{0pt}
+% \subsection{xduugtp.cls}
+%    \begin{macrocode}
+%<*class>
+%    \end{macrocode}
+% \changes{v0.1.0}{2022/01/02}{新增西电本科生开题报告\XeLaTeX{}模板}
+% \subsubsection{定义选项}
+% 设置运行平台为Overleaf。
+%    \begin{macrocode}
+\newif\ifoverleaf\overleaffalse
+\DeclareOption{overleaf}{\overleaftrue}
+%    \end{macrocode}
+% 设置运行平台为TeXPage。
+%    \begin{macrocode}
+\DeclareOption{texpage}{\overleaftrue}
+%    \end{macrocode}
+%    \begin{macrocode}
+\ProcessOptions\relax
+%    \end{macrocode}
+% 加载\clsx{ctexart}文档类，设置纸张大小为A4，设置默认字号为小四。
+%    \begin{macrocode}
+\LoadClass[a4paper,zihao=-4,fontset=none]{ctexart}
+%    \end{macrocode}
+% \subsubsection{装载宏包}
+% 加载\pkgx{hyperref}宏包，用于书签增加章节序号，并隐藏超链接颜色和边框。
+%    \begin{macrocode}
+\RequirePackage[bookmarksnumbered,hidelinks]{hyperref}
+%    \end{macrocode}
+% \changes{v0.1.2}{2022/01/03}{支持URL自动断行}
+% 加载\pkgx{xurl}宏包，用于URL自动断行。
+%    \begin{macrocode}
+\RequirePackage{xurl}
+%    \end{macrocode}
+% 加载\pkgx{tcolorbox}宏包，用于绘制边框。
+%    \begin{macrocode}
+\RequirePackage[most]{tcolorbox}
+%    \end{macrocode}
+% 加载\pkgx{xifthen}宏包，用于条件判断。
+%    \begin{macrocode}
+\RequirePackage{xifthen}
+%    \end{macrocode}
+% 加载\pkgx{xeCJKfntef}宏包，用于设置下划线。
+%    \begin{macrocode}
+\RequirePackage{xeCJKfntef}
+%    \end{macrocode}
+% 加载\pkgx{geometry}宏包，用于设置页边距。
+%    \begin{macrocode}
+\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0cm,headsep=0cm,headheight=0cm]{geometry}
+%    \end{macrocode}
+% 加载\pkgx{natbib}宏包和\pkgx{gbt7714}宏包，用于支持参考文献引用。
+% \changes{v0.1.4}{2022/01/03}{适配旧版\pkgx{gbt7714}}
+%    \begin{macrocode}
+\RequirePackage[sort&compress,square,super,comma]{natbib}
+\RequirePackage{gbt7714}
+\@ifpackagelater{gbt7714}{2020/03/04}
+  {\PassOptionsToPackage{numbers}{natbib}}
+  {\PassOptionsToPackage{numbers}{gbt7714}}
+\newcommand\ckwx{}
+\@ifpackagelater{gbt7714}{2020/03/04}
+  {\renewcommand\ckwx{\bibliographystyle{gbt7714-numerical}}}
+  {}
+\setlength{\bibsep}{0pt}
+%    \end{macrocode}
+% 加载\pkgx{graphicx}宏包，用于支持图片插入，并配置默认图片目录。
+% \changes{v0.3.0}{2022/01/10}{增加手写日期图像目录}
+%    \begin{macrocode}
+\RequirePackage{graphicx}
+\graphicspath{{figures/}{figures/sign/}}
+%    \end{macrocode}
+% \changes{v0.2.0}{2022/01/09}{支持插入图表}
+% 加载\pkgx{caption}宏包，用于设置图表标题。
+%    \begin{macrocode}
+\RequirePackage[labelsep=quad]{caption}
+\setlength{\abovecaptionskip}{6bp}
+\setlength{\belowcaptionskip}{6bp}
+\renewcommand{\captionfont}{\zihao{5}}
+%    \end{macrocode}
+% 加载\pkgx{xspace}宏包，用于自动添加空格。
+%    \begin{macrocode}
+\RequirePackage{xspace}
+\xspaceaddexceptions{。？！，、；：“”‘’—….－-～·《》<>＿}
+%    \end{macrocode}
+% \begin{macro}{\figurename,\tablename,\figureref,\tableref,\equationref}
+% 自定义交叉引用命令。
+%    \begin{macrocode}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\newcommand{\figureref}[1]{图\xspace\ref{#1}\xspace}
+\newcommand{\tableref}[1]{表\xspace\ref{#1}\xspace}
+\newcommand{\equationref}[1]{公式(\ref{#1})}
+%    \end{macrocode}
+% \end{macro}
+% \begin{environment}{tpfigure}
+% 定义图片环境。
+%    \begin{macrocode}
+\NewEnviron{tpfigure}{
+  \begin{minipage}{\textwidth}
+  \vspace*{6bp}
+  \centering
+  \BODY
+  \end{minipage}
+}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{tptable}
+% 定义表格环境。
+%    \begin{macrocode}
+\NewEnviron{tptable}{
+  \begin{minipage}{\textwidth}
+  \centering
+  \zihao{5}
+  \BODY
+  \vspace*{6bp}
+  \end{minipage}
+}
+%    \end{macrocode}
+% \end{environment}
+% 设置PDF元数据。
+%    \begin{macrocode}
+\BeforeBeginEnvironment{document}{
+  \hypersetup{
+    pdfauthor={\authorName},
+    pdfsubject={西安电子科技大学\school{}学院\class{}届本科生毕业论文（设计）开题报告}
+  }
+}
+%    \end{macrocode}
+% \begin{macro}{\sign}
+% 插入签名图片。
+%    \begin{macrocode}
+\newcommand\sign[1]{\includegraphics[height=1.5em,keepaspectratio]{#1}}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\zdjsqm}
+% 指导教师签名。
+%    \begin{macrocode}
+\newcommand\zdjsqm{}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\xyshqm}
+% 学院审核签名。
+%    \begin{macrocode}
+\newcommand\xyshqm{}
+%    \end{macrocode}
+% \end{macro}
+% \changes{v0.3.0}{2022/01/10}{支持插入手写日期图像}
+% \begin{macro}{\zdjsqmrq}
+% 指导教师签名日期。
+%    \begin{macrocode}
+\newcommand\zdjsqmrq{年\qquad 月\qquad 日}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\xyshqmrq}
+% 学院审核签名日期。
+%    \begin{macrocode}
+\newcommand\xyshqmrq{年\qquad 月\qquad 日}
+%    \end{macrocode}
+% \end{macro}
+% 设置页面样式为空。
+%    \begin{macrocode}
+\pagestyle{empty}
+%    \end{macrocode}
+% \subsubsection{配置字体}
+% \begin{macro}{\FakeBoldValue}
+% 参考清华大学学位论文模板thuthesis.dtx\footctan{macros/latex/contrib/thuthesis/thuthesis.dtx}，设置粗细程度为$3$。
+%    \begin{macrocode}
+\newcommand\FakeBoldValue{3}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\FakeSlantValue}
+% 参考fontspec.pdf\footctan{macros/unicodetex/latex/fontspec/fontspec.pdf}中的示例，设置倾斜程度为$0.2$。
+%    \begin{macrocode}
+\newcommand\FakeSlantValue{0.2}
+%    \end{macrocode}
+% \end{macro}
+% \paragraph{非安装字体}
+%    \begin{macrocode}
+\ifoverleaf
+%    \end{macrocode}
+% 默认英文字体为Times New Roman。
+%    \begin{macrocode}
+  \setmainfont{times.ttf}
+    [Path=fonts/,
+    BoldFont=timesbd.ttf,
+    ItalicFont=timesi.ttf,
+    BoldItalicFont=timesbi.ttf]
+%    \end{macrocode}
+% 默认中文字体为中易宋体。
+%    \begin{macrocode}
+  \setCJKmainfont{simsun.ttc}
+    [Path=fonts/,
+    BoldFont={simsun.ttc},BoldFeatures={FakeBold=\FakeBoldValue},
+    SlantedFont={simsun.ttc},SlantedFeatures={FakeSlant=\FakeSlantValue},
+    BoldSlantedFont={simsun.ttc},BoldSlantedFeatures={FakeBold=\FakeBoldValue,FakeSlant=\FakeSlantValue},
+    ItalicFont={simkai.ttf},
+    BoldItalicFont={simkai.ttf},BoldItalicFeatures={FakeBold=\FakeBoldValue}]
+%    \end{macrocode}
+% 黑体字体。
+% \changes{v0.1.5}{2022/01/03}{修正Overleaf中标题年份数字字体}
+% \changes{v0.1.5}{2022/01/03}{定义英文黑体字体族}
+%    \begin{macrocode}
+  \newCJKfontfamily\heiti{simhei.ttf}[Path=fonts/,BoldFont={simhei.ttf},BoldFeatures={FakeBold=\FakeBoldValue}]
+  \newfontfamily\enheiti{simhei.ttf}[Path=fonts/,BoldFont={simhei.ttf},BoldFeatures={FakeBold=\FakeBoldValue}]
+%    \end{macrocode}
+% \paragraph{已安装字体}
+%    \begin{macrocode}
+\else
+%    \end{macrocode}
+% 默认英文字体为Times New Roman。
+%    \begin{macrocode}
+  \setmainfont{Times New Roman}
+%    \end{macrocode}
+% 默认中文字体为中易宋体。
+%    \begin{macrocode}
+  \setCJKmainfont{SimSun}[
+    BoldFont={SimSun},BoldFeatures={FakeBold=\FakeBoldValue},
+    SlantedFont={SimSun},SlantedFeatures={FakeSlant=\FakeSlantValue},
+    BoldSlantedFont={SimSun},BoldSlantedFeatures={FakeBold=\FakeBoldValue,FakeSlant=\FakeSlantValue},
+    ItalicFont={KaiTi},
+    BoldItalicFont={KaiTi},BoldItalicFeatures={FakeBold=\FakeBoldValue}
+    ]
+%    \end{macrocode}
+% 黑体字体。
+% \changes{v0.1.3}{2022/01/03}{定义英文黑体字体族}
+%    \begin{macrocode}
+  \newCJKfontfamily\heiti{SimHei}[BoldFont={SimHei},BoldFeatures={FakeBold=\FakeBoldValue}]
+  \newfontfamily\enheiti{SimHei}[BoldFont={SimHei},BoldFeatures={FakeBold=\FakeBoldValue}]
+\fi
+%    \end{macrocode}
+% \subsubsection{标题样式}
+%    \begin{macrocode}
+\ctexset{
+  section={
+    name={,、},
+    number={\chinese{section}},
+    format={\raggedright\bfseries\zihao{-4}},
+    aftername={},
+    beforeskip={0pt plus 0pt minus 0pt},
+    afterskip={0pt plus 0pt minus 0pt}
+  }
+}
+\ctexset{
+  subsection={name={（,）},
+    number={\chinese{subsection}},
+    format={\raggedright\bfseries\zihao{-4}},
+    aftername={},
+    titleformat={},
+    beforeskip={8pt plus 0pt minus 0pt},
+    afterskip={0pt plus 0pt minus 0pt}
+  }
+}
+\ctexset{
+  subsubsection={name={（,）},
+    number={\arabic{subsubsection}},
+    format={\raggedright\bfseries\zihao{-4}},
+    aftername={},
+    titleformat={},
+    beforeskip={8pt plus 0pt minus 0pt},
+    afterskip={0pt plus 0pt minus 0pt},
+    indent={2em}
+  }
+}
+%    \end{macrocode}
+% \subsubsection{封面和扉页}
+% \begin{macro}{\ulthickness}
+% 设置下划线粗细。
+%    \begin{macrocode}
+\newcommand\ulthickness{1pt}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\valueWithUL}
+% 自定义固定长度下划线命令。
+%    \begin{macrocode}
+\newcommand\valueWithUL[2]{\CJKunderline[thickness=\ulthickness]{\makebox[#1]{#2}}}
+%    \end{macrocode}
+% \end{macro}
+% 绘制封面和扉页。
+%    \begin{macrocode}
+\AtBeginDocument{
+  \begin{titlepage}
+  \vspace*{-30pt}
+%    \end{macrocode}
+% \paragraph{标题信息}
+% \changes{v0.1.3}{2022/01/03}{修正标题年份数字字体}
+%    \begin{macrocode}
+  \begin{center}
+  \zihao{-2}
+  西安电子科技大学\CJKunderline[thickness=\ulthickness]{\school}学院
+  \end{center}
+  \vspace*{35pt}
+  \begin{center}
+  \heiti\zihao{2}
+  本科生毕业论文（设计）开题报告
+  \end{center}
+  \vspace*{-23pt}
+  \begin{center}
+  \enheiti\heiti\zihao{-3}
+  （\class{}届）
+  \end{center}
+%    \end{macrocode}
+% \paragraph{个人信息}
+%    \begin{macrocode}
+  \vspace*{123pt}
+  \begin{center}
+  \zihao{-3}
+%    \end{macrocode}
+% \begin{macro}{\metaValueWidth}
+% 存储最长的值的宽度。
+%    \begin{macrocode}
+  \newlength\metaValueWidth
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\authorNameWidth,\majorWidth,\studentNoWidth,\advisorNameWidth}
+% 存储首页若干值的宽度便于绘制下划线。
+%    \begin{macrocode}
+  \newlength\authorNameWidth
+  \newlength\majorWidth
+  \newlength\studentNoWidth
+  \newlength\advisorNameWidth
+  \settowidth{\authorNameWidth}{\authorName}
+  \settowidth{\majorWidth}{\major}
+  \settowidth{\studentNoWidth}{\studentNo}
+  \settowidth{\advisorNameWidth}{\advisorName}
+%    \end{macrocode}
+% \end{macro}
+% 计算最大值。
+%    \begin{macrocode}
+  \setlength{\metaValueWidth}{
+  \maxof{\authorNameWidth}{
+  \maxof{\majorWidth}{
+  \maxof{\studentNoWidth}{\advisorNameWidth}}}}
+%    \end{macrocode}
+% 补充\valuex{2em}长度，使得下划线略长于文本。
+%    \begin{macrocode}
+  \addtolength{\metaValueWidth}{2em}
+%    \end{macrocode}
+% 增加每一项数据间的垂直距离。
+%    \begin{macrocode}
+  \renewcommand{\arraystretch}{1.5}
+%    \end{macrocode}
+% 排版开题报告元数据。
+%    \begin{macrocode}
+  \begin{tabular}{cc}
+  学生姓名&\valueWithUL{\metaValueWidth}{\authorName}\\
+  专\qquad{}业&\valueWithUL{\metaValueWidth}{\major}\\
+  学\qquad{}号&\valueWithUL{\metaValueWidth}{\studentNo}\\
+  指导教师&\valueWithUL{\metaValueWidth}{\advisorName}\\
+  \end{tabular}
+  \end{center}
+  \vspace{80pt}
+  \begin{center}
+  \zihao{4}
+  \submitDate
+  \end{center}
+  \vspace{50pt}
+  \begin{center}
+  \zihao{5}
+  （本表一式三份，学生、指导教师、学院各一份）
+  \end{center}
+  \end{titlepage}
+  \newpage
+}
+%    \end{macrocode}
+% \subsubsection{绘制边框}
+% \paragraph{定义边框样式}
+% \changes{v0.1.1}{2022/01/03}{使用\tnx{newlength}替换\tnx{newcommand}来定义边框边距和线宽}
+% \begin{macro}{\boxmargin,\boxrule}
+% 定义边框边距和线宽。
+%    \begin{macrocode}
+\newlength\boxmargin
+\setlength{\boxmargin}{5pt}
+\newlength\boxrule
+\setlength{\boxrule}{1pt}
+%    \end{macrocode}
+% \end{macro}
+% \changes{v0.1.1}{2022/01/03}{适配最新版\pkgx{tcolorbox}宏包}
+% \changes{v0.1.1}{2022/01/03}{增加\pkgx{tcolorbox}默认配置}
+% 定义默认边框样式。
+%    \begin{macrocode}
+\tcbset{
+  standard jigsaw,
+  sharp corners=all,
+  colframe=black,
+  opacityback=0,
+  boxsep=0pt,
+  boxrule=\boxrule,
+  top=\boxmargin,
+  bottom=\boxmargin,
+  left=\boxmargin,
+  right=\boxmargin,
+  beforeafter skip=0pt,
+  before upper={\setlength{\parindent}{2em}\linespread{1}\fontsize{12}{20}\selectfont}
+}
+%    \end{macrocode}
+% \begin{environment}{mybox1}
+% 定义可分页且不撑满的边框，主要用于：
+% \begin{enumerate}
+% \item 论文名称及项目来源。
+% \item 工作的主要阶段、进度和完成时间。
+% \end{enumerate}
+% \changes{v0.1.1}{2022/01/03}{移除\envx{mybox1}公共配置}
+%    \begin{macrocode}
+\newtcolorbox{mybox1}{
+  breakable,
+  height fixed for=first and middle
+}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{mybox2}
+% 定义可分页且撑满的边框，主要用于：
+% \begin{enumerate}
+% \item 研究目的和意义。
+% \item 国内外研究现状和发展趋势。
+% \item 主要研究内容、要解决的问题及本文的初步方案。
+% \item 已进行的前期准备工作。
+% \end{enumerate}
+% \changes{v0.1.1}{2022/01/03}{移除\envx{mybox2}公共配置}
+%    \begin{macrocode}
+\newtcolorbox{mybox2}{
+  breakable,
+  height fixed for=all,
+  height fill=maximum
+}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{mybox3}
+% 定义高度仅有半页的边框，主要用于：
+% \begin{enumerate}
+% \item 指导教师意见。
+% \item 学院审核意见。
+% \end{enumerate}
+% \changes{v0.1.1}{2022/01/03}{移除\envx{mybox3}公共配置}
+%    \begin{macrocode}
+\newtcolorbox{mybox3}{
+  height=.5\textheight+.5\boxrule,
+  space to upper,
+  lower separated=false,
+  halign lower=flush right
+}
+%    \end{macrocode}
+% \end{environment}
+% \paragraph{定义边框环境}
+% \begin{environment}{mcly}
+% 论文名称及项目来源。
+%    \begin{macrocode}
+\newenvironment{mcly}
+  {\begin{mybox1}}
+  {\end{mybox1}
+  \vspace*{-\boxrule}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{yjmdyy}
+% 研究目的和意义。
+% \changes{v0.1.1}{2022/01/03}{调整\envx{yjmdyy}上边距}
+%    \begin{macrocode}
+\newenvironment{yjmdyy}
+  {\begin{mybox2}}
+  {\end{mybox2}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{yjxz}
+% 国内外研究现状和发展趋势。
+%    \begin{macrocode}
+\newenvironment{yjxz}
+  {\begin{mybox2}}
+  {\vspace*{8pt}
+  \ckwx
+  \bibliography{xduugtp}
+  \end{mybox2}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{yjnr}
+% 主要研究内容、要解决的问题及本文的初步方案。
+%    \begin{macrocode}
+\newenvironment{yjnr}
+  {\begin{mybox2}}
+  {\end{mybox2}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{gzjd}
+% 工作的主要阶段、进度和完成时间。
+% \changes{v0.1.1}{2022/01/03}{调整\envx{gzjd}下边距}
+%    \begin{macrocode}
+\newenvironment{gzjd}
+  {\begin{mybox1}}
+  {\end{mybox1}
+  \vspace*{-\boxrule}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{zbgz}
+% 已进行的前期准备工作。
+%    \begin{macrocode}
+\newenvironment{zbgz}
+  {\begin{mybox2}}
+  {\end{mybox2}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{zdjsyj}
+% 指导教师意见。
+% \changes{v0.3.0}{2022/01/10}{在\envx{zdjsyj}处插入手写日期图像}
+%    \begin{macrocode}
+\newenvironment{zdjsyj}
+  {\begin{mybox3}}
+  {\tcblower\linespread{1}\fontsize{12}{30}\selectfont
+  签名\quad\makebox[5em][l]{\zdjsqm}\\
+  \zdjsqmrq
+  \end{mybox3}}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{xyshyj}
+% 学院审核意见。
+% \changes{v0.3.0}{2022/01/10}{在\envx{xyshyj}处插入手写日期图像}
+%    \begin{macrocode}
+\newenvironment{xyshyj}
+  {\vspace*{-\boxrule}
+  \begin{mybox3}}
+  {\tcblower\linespread{1}\fontsize{12}{30}\selectfont
+  签名\quad\makebox[5em][l]{\xyshqm}\\
+  \xyshqmrq
+  \end{mybox3}}
+%    \end{macrocode}
+% \end{environment}
+%    \begin{macrocode}
+%</class>
+%    \end{macrocode}
+% \subsection{xduugtp.tex}
+%    \begin{macrocode}
+%<*tex>
+%    \end{macrocode}
+%    \begin{macrocode}
+\documentclass{xduugtp}
+%% 学院
+\newcommand\school{电子工程}
+%% 界
+\newcommand\class{2022}
+%% 姓名
+\newcommand\authorName{张三}
+%% 专业
+\newcommand\major{电子科学与技术}
+%% 学号
+\newcommand\studentNo{1101110071}
+%% 指导教师
+\newcommand\advisorName{李四}
+%% 开题日期
+\newcommand\submitDate{2022年1月2日}
+%% 签名图像
+%% 指导教师签名及日期
+%% \renewcommand\zdjsqm{\sign{lisi}}
+%% \renewcommand\zdjsqmrq{\sign{lisidate}}
+%% \renewcommand\zdjsqmrq{2022年1月10日}
+%% 学院签名及日期
+%% \renewcommand\xyshqm{\sign{lisi}}
+%% \renewcommand\xyshqmrq{\sign{lisidate}}
+%% \renewcommand\xyshqmrq{2022年1月10日}
+%    \end{macrocode}
+%    \begin{macrocode}
+\begin{document}
+\begin{mcly}
+\section{论文名称及项目来源}
+%% 在这里撰写论文名称及项目来源
+\end{mcly}
+\begin{yjmdyy}
+\section{研究目的和意义}
+%% 在这里撰写研究目的和意义
+\end{yjmdyy}
+\begin{yjxz}
+\section{国内外研究现状和发展趋势}
+%% 在这里撰写国内外研究现状和发展趋势
+\end{yjxz}
+\begin{yjnr}
+\section{主要研究内容、要解决的问题及本文的初步方案}
+%% 在这里撰写主要研究内容、要解决的问题及本文的初步方案
+\end{yjnr}
+\begin{gzjd}
+\section{工作的主要阶段、进度和完成时间}
+%% 在这里撰写工作的主要阶段、进度和完成时间
+\end{gzjd}
+\begin{zbgz}
+\section{已进行的前期准备工作}
+%% 在这里撰写已进行的前期准备工作
+\end{zbgz}
+\begin{zdjsyj}
+\section{指导教师意见}
+%% 在这里撰写指导教师意见
+\end{zdjsyj}
+\begin{xyshyj}
+\section{学院审核意见}
+%% 在这里撰写学院审核意见
+\end{xyshyj}
+\end{document}
+%    \end{macrocode}
+%    \begin{macrocode}
+%</tex>
+%    \end{macrocode}
+% \subsection{xduugtp.bib}
+%    \begin{macrocode}
+%<*bib>
+%    \end{macrocode}
+%    \begin{macrocode}
+@article{ChangHTD19,
+author = {Yuan{-}Hao Chang and Jingtong Hu and Mehdi Baradaran Tahoori and Ronald F. DeMara},
+title = {Guest Editorial: {IEEE} Transactions on Computers Special Section on Emerging Non-Volatile Memory Technologies: From Devices to Architectures and Systems},
+journal = {{IEEE} Trans. Computers},
+volume = {68},
+number = {8},
+pages = {1111--1113},
+year = {2019}
+}
+@article{WangZSS21,
+author = {王鹏 and 张修社 and 索龙 and 史可懿},
+title = {基于随机时变图的时间确定性网络路由算法},
+journal = {通信学报},
+volume = {42},
+number = {9},
+pages = {21--30},
+year = {2021}
+}
+@article{GongL21,
+author = {Ming{-}Yan Gong and Bin Lyu},
+title = {Alternating Maximization and the {EM} Algorithm in Maximum-Likelihood Direction Finding},
+journal = {{IEEE} Trans. Veh. Technol.},
+year = {2021},
+doi = {10.1109/TVT.2021.3106794}
+}
+@inproceedings{TsaiCLQLB13,
+author = {Wei{-}Tek Tsai and Charles J. Colbourn and Jie Luo and Guanqiu Qi and Qingyang Li and Xiaoying Bai},
+title = {Test algebra for combinatorial testing},
+booktitle = {{AST}},
+pages = {19--25},
+publisher = {{IEEE} Computer Society},
+year = {2013}
+}
+@online{Collinson21,
+author = {Stephen Collinson},
+title = {Biden's refusal of executive privilege claim ignites new firestorm with {Trump}},
+url = {https://edition.cnn.com/2021/10/26/politics/donald-trump-joe-biden-executive-privilege-january-6/index.html},
+urldate = {2021-10-26}
+}
+%    \end{macrocode}
+%    \begin{macrocode}
+%</bib>
+%    \end{macrocode}
+% \subsection{latexmkrc}
+%    \begin{macrocode}
+%<*latexmkrc>
+%    \end{macrocode}
+%    \begin{macrocode}
+$pdf_mode = 5;
+$xelatex = 'xelatex -synctex=1';
+$clean_ext = 'aux bbl blg fdb_latexmk fls lof log lot out synctex(busy) synctex.gz toc xdv';
+@default_files = ('xduugtp');
+%    \end{macrocode}
+%    \begin{macrocode}
+%</latexmkrc>
+%    \end{macrocode}
+% \Finale
+\endinput
