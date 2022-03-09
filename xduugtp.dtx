@@ -5,7 +5,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{xduugtp}
 %<*class>
-[2022/03/09 v1.0.4 Xidian University Undergraduate Thesis Proposal class]
+[2022/03/09 v1.0.5 Xidian University Undergraduate Thesis Proposal class]
 %</class>
 %<*driver>
 \documentclass{ctxdoc}
@@ -865,6 +865,7 @@
 \fi
 %    \end{macrocode}
 % \subsubsection{标题样式}
+% \changes{v1.0.2}{2022/03/09}{移除各级标题粗体样式}
 %    \begin{macrocode}
 \ctexset{
   section={
@@ -1003,6 +1004,7 @@
 % \changes{v0.1.1}{2022/01/03}{使用\tnx{newlength}替换\tnx{newcommand}来定义边框边距和线宽}
 % \begin{macro}{\boxmargin,\boxrule}
 % 定义边框边距和线宽。
+% \changes{v1.0.1}{2022/03/09}{修正边框宽度}
 %    \begin{macrocode}
 \newlength\boxmargin
 \setlength{\boxmargin}{5pt}
